@@ -36,8 +36,8 @@ modules:
 
   - name: gexiv2Dependency
     buildsystem: meson
-    env:
-      - -D python3_girdir=/app/lib/python3.8/site-packages/gi/overrides
+    config-options:
+      - -Dpython3_girdir=no
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
