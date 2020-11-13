@@ -38,13 +38,15 @@ modules:
     buildsystem: simple
     config-opts:
       - --libdir=/lib
+    env:
+      - -D python3_girdir=/app/lib/python3.8/site-packages/gi/overrides
     ensure-writable:
       - /local/
       - /var/
       - /lib/
     build-commands:
       - meson setup /app/builddir
-      - ninja -C /app/builddir
+      - meson install -C /app/builddir
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
