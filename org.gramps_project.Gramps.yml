@@ -38,6 +38,9 @@ modules:
     buildsystem: meson
     config-options:
       - -Dpython3_girdir=no
+    ensure-writable:
+      - /lib/python3.8/site-packages/gi/overrides/GExiv2.py
+      - /lib/python3.8/site-packages/gi/overrides/
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
