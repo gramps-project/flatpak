@@ -37,7 +37,6 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - --libdir=/lib
       - -D python3_girdir=/app/lib/python3.8/site-packages/gi/overrides
     sources:
       - type: archive
