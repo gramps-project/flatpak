@@ -36,12 +36,11 @@ modules:
 
   - name: gexiv2Dependency
     buildsystem: meson
-    config-options:
+    config-opts:
       - -Dpython3_girdir=no
     env:
       - DESTDIR=/app
     ensure-writable:
-      - /lib/python3.8/site-packages/gi/overrides/GExiv2.py
       - /lib/python3.8/site-packages/gi/overrides/
     sources:
       - type: archive
