@@ -35,10 +35,10 @@ modules:
         sha256:  a79f5613812aa21755d578a297874fb59a85101e793edc64ec2c6bd994e3e778
 
   - name: gexiv2Dependency
-    buildsystem: meson
-    ensure-writable:
-      - /lib/python3.8/site-packages/gi/overrides/GExiv2.py
-      - /lib/python3.8/site-packages/gi/overrides/
+    buildsystem: simple
+    build-commands:
+      - meson setup /app/builddir
+      - meson compile -C /app/builddir
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
