@@ -13,10 +13,7 @@
       Gramps is a free software project and community. We strive to produce a genealogy program that is both intuitive for hobbyists and feature-complete for professional genealogists. It is a community project, created, developed and governed by genealogists.
     </p>
     <p>
-      This flatpak does not include BSDDB3, which makes automated installation difficult regarding Oracle.  So please convert your database to SQLite3 before using the flatpak.  The flatpak includes all other dependencies for the basic installation, but optional dependencies are not included at this time due to flathub sandboxing requirements.  At some point in the future there might be a flatpak with more features available at the gramps-project download page linked below.
-    </p>
-    <p>
-     To use without BSDDB, close the Family Tree Manager and click on the "Edit" menu of Gramps.  Select "Preferences", then in the Preferences window select the "Family Tree" tab.  Change the "Database Backend" to SQLite, then close the Preferences window.  Now you can open the Family Tree Manager to create a new family tree by selecting the "Family Trees" menu, then selecting "Manage Family Trees..."
+      The flatpak includes dependencies for the basic installation, but most optional dependencies are not included at this time due to flathub sandboxing requirements.
     </p>
   </description>
 
