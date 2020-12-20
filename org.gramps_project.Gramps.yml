@@ -3,8 +3,6 @@ app-id: org.gramps_project.Gramps
 runtime: org.gnome.Platform
 runtime-version: '3.38'
 sdk: org.gnome.Sdk
-# uncommenting the writable-sdk should make the gexiv2 install and everything to build.
-# writable-sdk: true
 command: /app/bin/gramps
 rename-icon: gramps
 finish-args:
@@ -13,12 +11,40 @@ finish-args:
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
-  - --socket=x11
+  - --socket=wayland
+  - --socket=fallback-x11
   - --share=ipc
 #needs network access for maps
   - --share=network
 modules:
-# oracle requires a login to get bsddb, and unix directory was empty in the db-6.1.23.tar.gz and db-6.1.23.NC.tar.gz as of 12 Nov 2020
+  - name: BSDDB3
+    subdir: dist
+    builddir: true
+    config-opts:
+      - --enable-compat185
+      - --enable-shared
+      - --enable-cxx
+      - --enable-dbm
+      - --enable-stl
+    sources:
+      - type: archive
+        url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
+        sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
+      - type: patch
+        path: atomic.patch
+
+  - name: python3-bsddb
+    buildsystem: simple
+    build-options:
+      env:
+        BERKELEYDB_DIR: /app
+    build-commands:
+      - python3 setup.py build
+      - python3 setup.py install --prefix=/app
+    sources:
+      - type: archive
+        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
+        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
 
   - name: osmgpsmapDependency
     buildsystem: autotools
@@ -35,10 +61,9 @@ modules:
         sha256:  a79f5613812aa21755d578a297874fb59a85101e793edc64ec2c6bd994e3e778
 
   - name: gexiv2Dependency
-    buildsystem: simple
-    build-commands:
-      - meson setup /app/builddir
-      - meson compile -C /app/builddir
+    buildsystem: meson
+    config-opts:
+      - -Dpython3_girdir=no
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
