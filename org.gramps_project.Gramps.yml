@@ -3,7 +3,7 @@ app-id: org.gramps_project.Gramps
 runtime: org.gnome.Platform
 runtime-version: '3.38'
 sdk: org.gnome.Sdk
-command: /app/bin/gramps
+command: gramps
 rename-icon: gramps
 finish-args:
 # needs home access to access documents and pictures
@@ -35,7 +35,7 @@ modules:
         # for aarch64 
       - type: shell
         commands:
-          - cp -p /usr/share/automake-*/config.{sub,guess} .
+          - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
   - name: python3-bsddb
     buildsystem: simple
@@ -72,6 +72,11 @@ modules:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
         sha256:  8aeafd59653ea88f6b78cb03780ee9fd61a2f993070c5f0d0976bed93ac2bd77
+        # for arch compatibility
+      - type: patch
+        path: exiv2-arch-flags.patch
+      - type: patch
+        path: exiv2-arch-flags-2.patch
 
   - name: PyICUDependency
     buildsystem: simple
