@@ -63,6 +63,11 @@ modules:
       - type: archive
         url:  https://www.exiv2.org/builds/exiv2-0.27.3-Source.tar.gz
         sha256:  a79f5613812aa21755d578a297874fb59a85101e793edc64ec2c6bd994e3e778
+        # for arch compatibility
+      - type: patch
+        path: exiv2-arch-flags.patch
+      - type: patch
+        path: exiv2-arch-flags-2.patch
 
   - name: gexiv2Dependency
     buildsystem: meson
@@ -72,11 +77,6 @@ modules:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
         sha256:  8aeafd59653ea88f6b78cb03780ee9fd61a2f993070c5f0d0976bed93ac2bd77
-        # for arch compatibility
-      - type: patch
-        path: exiv2-arch-flags.patch
-      - type: patch
-        path: exiv2-arch-flags-2.patch
 
   - name: PyICUDependency
     buildsystem: simple
