@@ -17,6 +17,17 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
+  - name: python-fontconfig
+    build-system: simple
+    ensure-writable:
+      - /lib/python3.8/site-packages/easy-install.pth
+    build-commands:
+      - python3 setup.py install --prefix=/app
+    sources:
+      - type: archive
+        url: https://github.com/Vayn/python-fontconfig/archive/v0.5.0.tar.gz
+        sha256: da9699cf145e12ad0ddd241ab467ee9f0fcdb2d302b732a5ecf15cb866738961
+
   - name: BSDDB3
     subdir: dist
     builddir: true
