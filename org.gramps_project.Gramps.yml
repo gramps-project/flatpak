@@ -139,6 +139,7 @@ modules:
   - name: Gramps
     buildsystem: simple
     ensure-writable:
+      - /app/data/gramps.keys
       - /lib/python3.8/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py build --build-base=/app
