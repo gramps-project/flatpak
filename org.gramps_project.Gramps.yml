@@ -3,7 +3,7 @@ app-id: org.gramps_project.Gramps
 runtime: org.gnome.Platform
 runtime-version: '3.38'
 sdk: org.gnome.Sdk
-command: /app/bin/gramps
+command: gramps
 rename-icon: gramps
 finish-args:
 # needs home access to access documents and pictures
@@ -32,6 +32,10 @@ modules:
         sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
       - type: patch
         path: atomic.patch
+        # for aarch64 
+      - type: shell
+        commands:
+          - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
   - name: python3-bsddb
     buildsystem: simple
@@ -59,6 +63,11 @@ modules:
       - type: archive
         url:  https://www.exiv2.org/builds/exiv2-0.27.3-Source.tar.gz
         sha256:  a79f5613812aa21755d578a297874fb59a85101e793edc64ec2c6bd994e3e778
+        # for arm64 compatibility
+      - type: patch
+        path: exiv2-arch-flags.patch
+      - type: patch
+        path: exiv2-arch-flags-2.patch
 
   - name: gexiv2Dependency
     buildsystem: meson
