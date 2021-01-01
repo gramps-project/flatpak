@@ -139,10 +139,8 @@ modules:
   - name: Gramps
     buildsystem: simple
     ensure-writable:
-      - /app/data/gramps.keys
       - /lib/python3.8/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py build --build-base=/app
       - python3 setup.py install --prefix=/app --exec-prefix=/bin
       - install -Dm644 /app/share/icons/gramps.png -t /app/share/icons/hicolor/48x48/apps/
       - install -Dm644 /app/share/gramps/images/gramps.svg -t /app/share/icons/hicolor/scalable/apps/
