@@ -25,8 +25,8 @@ modules:
       - python3 setup.py install --prefix=/app
     sources:
       - type: archive
-        url: http://deb.debian.org/debian/pool/main/p/python-fontconfig/python-fontconfig_0.5.1.orig.tar.gz
-        sha256: b7cfe366242f83b8cd7175b7d4dd95d19f42d619c58a51914f72b1e741739994
+        url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
+        sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
 
   - name: BSDDB3
     subdir: dist
