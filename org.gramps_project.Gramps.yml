@@ -126,8 +126,9 @@ modules:
     buildsystem: autotools
     config-opts:
       - --prefix=/app
+      - --enable-introspection=no
     ensure-writable:
-#      - /lib/python3.8/site-packages/gi/overrides/
+      - /lib/python3.8/site-packages/gi/overrides/
       - /lib/python3.8/site-packages/gi/overrides/GooCanvas.py
     sources:
       - type: archive
