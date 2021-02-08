@@ -123,7 +123,7 @@ modules:
         sha256:  a9a5bf6833360f8f69e9375b91c1a7dd6e0c9157a42aee5bb7d6891804d96371
 
   - name: GoocanvasDependency
-    buildsystem: cmake
+    buildsystem: autotools
     ensure-writable:
       - /lib/python3.8/site-packages/gi/overrides/
     sources:
