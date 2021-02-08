@@ -124,16 +124,11 @@ modules:
 
   - name: GoocanvasDependency
     buildsystem: autotools
+    config-opts:
+      - -Dpython3_girdir=no
     ensure-writable:
-      - /lib/
-      - /lib/python3.8/
-      - /lib/python3.8/site-packages/
-      - /lib/python3.8/site-packages/gi/
-      - /lib/python3.8/site-packages/gi/overrides/
+#      - /lib/python3.8/site-packages/gi/overrides/
       - /lib/python3.8/site-packages/gi/overrides/GooCanvas.py
-      - /usr/lib/python3.8/site-packages/gi/overrides/GooCanvas.py
-      - lib/python3.8/site-packages/gi/overrides/GooCanvas.py
-      - /app/lib/python3.8/site-packages/gi/overrides/GooCanvas.py
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/goocanvas/3.0/goocanvas-3.0.0.tar.xz
