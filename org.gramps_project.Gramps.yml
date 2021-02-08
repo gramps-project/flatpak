@@ -125,8 +125,7 @@ modules:
   - name: GoocanvasDependency
     buildsystem: autotools
     ensure-writable:
-      - /app/lib/python3.8/site-packages/gi/overrides/
-      - /app/lib/python3.8/site-packages/gi/overrides/GooCanvas.py
+      - /lib/python3.8/site-packages/gi/overrides/GooCanvas.py
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
