@@ -127,6 +127,7 @@ modules:
     config-opts:
       - --prefix=/app
       - --exec-prefix=/app
+      - --enable-python=no
     ensure-writable:
       - /lib/python3.8/site-packages/gi/overrides/
       - /lib/python3.8/site-packages/gi/overrides/GooCanvas.py
