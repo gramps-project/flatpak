@@ -126,8 +126,7 @@ modules:
     buildsystem: autotools
     config-opts:
       - --prefix=/app
-      - --exec-prefix=/app
-      - --enable-python=no
+      - --with-pygi_overrides_dir=/app/lib/python3.8/site-packages/gi/overrides
     ensure-writable:
       - /lib/python3.8/site-packages/gi/overrides/
       - /lib/python3.8/site-packages/gi/overrides/GooCanvas.py
