@@ -126,16 +126,14 @@ modules:
     buildsystem: autotools
     config-opts:
       - --prefix=/app
-      - --with-pygi_overrides_dir=/app/lib/python3.8/site-packages/gi/overrides
+      - --with-pygi_overrides_dir=/lib/python3.8/site-packages/gi/overrides
     ensure-writable:
       - /lib/python3.8/site-packages/gi/overrides/
       - /lib/python3.8/site-packages/gi/overrides/GooCanvas.py
     sources:
       - type: archive
-        url:  https://download.gnome.org/sources/goocanvas/3.0/goocanvas-3.0.0.tar.xz
-        sha256:  670a7557fe185c2703a14a07506156eceb7cea3b4bf75076a573f34ac52b401a
-#        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
-#        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
+        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
+        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
 
   - name: GraphVizDependency
     buildsystem: autotools
