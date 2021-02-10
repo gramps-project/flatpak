@@ -126,11 +126,8 @@ modules:
     buildsystem: autotools
     config-opts:
       - --prefix=/app
-      - --with-pygi_overrides_dir=/lib/python3.8/site-packages/gi/overrides
-    ensure-writable:
-      - /lib/python3.8/site-packages/gi/overrides/GooCanvas.py
     make-install-args:
-      - girdir=/app/share/gir-1.0
+      - pyoverridesdir=/app/lib
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
