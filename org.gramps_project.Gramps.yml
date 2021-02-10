@@ -19,6 +19,9 @@ finish-args:
 modules:
   - name: GirDependency
     buildsystem: meson
+    config-opts:
+      - --prefix=/app
+      - -Dgir_dir_prefix=/app/lib
     sources:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/gnome-3-38/gobject-introspection-gnome-3-38.tar.gz
