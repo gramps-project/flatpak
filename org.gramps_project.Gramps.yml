@@ -21,7 +21,7 @@ modules:
     buildsystem: meson
     config-opts:
       - --prefix=/app
-      - -Dgir_dir_prefix=/app/lib
+      - -Dgir_dir_prefix=/app/lib/python3.8/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/gnome-3-38/gobject-introspection-gnome-3-38.tar.gz
@@ -115,7 +115,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib
+      - -Dpython3_girdir=/app/lib/python3.8/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
@@ -137,7 +137,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib
+      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
