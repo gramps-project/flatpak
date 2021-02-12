@@ -10,6 +10,7 @@ finish-args:
   - --filesystem=xdg-download
   - --filesystem=xdg-pictures
   - --persist=.gramps
+  - --filesystem=xdg-data/.gramps
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
