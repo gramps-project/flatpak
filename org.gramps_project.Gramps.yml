@@ -9,7 +9,7 @@ finish-args:
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
   - --filesystem=xdg-pictures
-  - --filesystem=~/.gramps
+  - --filesystem=~/.gramps:create
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
