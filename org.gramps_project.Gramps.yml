@@ -22,6 +22,7 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
+# following dependencies are for the GraphView Addon
   - name: PGIDependency
     buildsystem: simple
     build-commands:
@@ -50,7 +51,19 @@ modules:
 #        url:  https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/gnome-3-38/gobject-introspection-gnome-3-38.tar.gz
 #        sha256:  072e0e968c357b34017854f70b018c5c4c0e9affeb5071a9df66da5d2ee96113
 
-    #gramps 5.1.3 does not seem to recognize enchant2 included with sdk or platform
+  - name: GoocanvasDependency
+    buildsystem: autotools
+    config-opts:
+      - --prefix=/app
+    make-install-args:
+      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
+    sources:
+      - type: archive
+        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
+        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
+
+# gramps 5.1.3 does not seem to recognize enchant2 included with sdk or platform
+# following dependencies are for spell check    
   - name: enchant-ver1
     buildsystem: autotools
     sources:
@@ -72,17 +85,7 @@ modules:
         url: https://sourceforge.net/projects/gtkspell/files/3.0.10/gtkspell3-3.0.10.tar.xz
         sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
 
-  - name: python-fontconfig
-    buildsystem: simple
-    ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
-    build-commands:
-      - python3 setup.py install --prefix=/app
-    sources:
-      - type: archive
-        url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
-        sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
-
+# following dependencies are for the old Berkeley database
   - name: BSDDB3
     subdir: dist
     builddir: true
@@ -116,13 +119,7 @@ modules:
         url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
         sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
 
-  - name: osmgpsmapDependency
-    buildsystem: autotools
-    sources:
-       - type: archive
-         url:  https://github.com/nzjrs/osm-gps-map/releases/download/1.1.0/osm-gps-map-1.1.0.tar.gz
-         sha256:  8f2ff865ed9ed9786cc5373c37b341b876958416139d0065ebb785cf88d33586
-
+# following dependencies are for images
   - name: exiv2Dependency
     buildsystem: cmake
     sources:
@@ -144,6 +141,25 @@ modules:
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
         sha256:  8aeafd59653ea88f6b78cb03780ee9fd61a2f993070c5f0d0976bed93ac2bd77
 
+# following dependencies are for geography and charts
+  - name: python-fontconfig
+    buildsystem: simple
+    ensure-writable:
+      - /lib/python3.8/site-packages/easy-install.pth
+    build-commands:
+      - python3 setup.py install --prefix=/app
+    sources:
+      - type: archive
+        url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
+        sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
+
+  - name: osmgpsmapDependency
+    buildsystem: autotools
+    sources:
+       - type: archive
+         url:  https://github.com/nzjrs/osm-gps-map/releases/download/1.1.0/osm-gps-map-1.1.0.tar.gz
+         sha256:  8f2ff865ed9ed9786cc5373c37b341b876958416139d0065ebb785cf88d33586
+
   - name: PyICUDependency
     buildsystem: simple
     ensure-writable:
@@ -154,17 +170,6 @@ modules:
       - type: archive
         url:  https://files.pythonhosted.org/packages/31/46/fa08c8efae2951e67681ec24319f789fc1a74e2096dd74373e34c79319de/PyICU-2.6.tar.gz
         sha256:  a9a5bf6833360f8f69e9375b91c1a7dd6e0c9157a42aee5bb7d6891804d96371
-
-  - name: GoocanvasDependency
-    buildsystem: autotools
-    config-opts:
-      - --prefix=/app
-    make-install-args:
-      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
-    sources:
-      - type: archive
-        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
-        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
 
   - name: GraphVizDependency
     buildsystem: autotools
@@ -180,6 +185,7 @@ modules:
         url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.gz
         sha256:  6eaf422f26a81854a230b80fd18aaef7e8d94d661485bd2e97e695b9dce7bf7f
 
+# Gramps
   - name: Gramps
     buildsystem: simple
     ensure-writable:
