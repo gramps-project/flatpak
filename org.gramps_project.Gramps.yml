@@ -22,6 +22,15 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
+  - name: PGIDependency
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app
+    sources:
+      - type: archive
+        url:  https://github.com/pygobject/pgi/archive/0.0.11.2.tar.gz
+        sha256:  7a1ca8ac4e8bee6b663e6d556ecda8032584de753acd76ab3fc21c4f874fa738
+
   - name: PygobjectDependency
     buildsystem: meson
     config-opts:
