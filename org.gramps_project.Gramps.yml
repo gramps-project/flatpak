@@ -22,6 +22,15 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
+  - name: PygobjectDependency
+    buildsystem: meson
+    config-opts:
+      - --prefix=/app
+    sources:
+      - type: archive
+        url:  https://gitlab.gnome.org/GNOME/pygobject/-/archive/pygobject-3-38/pygobject-pygobject-3-38.tar.gz
+        sha256:  5b2f653a100fd7b417f40439600330056b99fb7887d8048c24463a38049bcf1b
+
   - name: GirDependency
     buildsystem: meson
     config-opts:
