@@ -6,8 +6,10 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 finish-args:
-# needs home access to access documents and pictures
-  - --filesystem=home
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+  - --filesystem=xdg-pictures
+  - --filesystem=~/.gramps:create
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
@@ -105,7 +107,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=no
+      - -Dpython3_girdir=/app/lib/python3.8/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.1.tar.xz
