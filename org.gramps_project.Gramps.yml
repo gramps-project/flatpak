@@ -8,11 +8,12 @@ rename-icon: gramps
 finish-args:
 # for error notifications
   - --socket=pulseaudio
-# paths
-  - --filesystem=xdg-documents
-  - --filesystem=xdg-download
-  - --filesystem=xdg-pictures
-  - --filesystem=~/.gramps:create
+# Gramps installs media files from backups to home, so it needs home access for now
+#  - --filesystem=xdg-documents
+#  - --filesystem=xdg-download
+#  - --filesystem=xdg-pictures
+#  - --filesystem=~/.gramps:create
+  - --filesystem=home
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
@@ -183,7 +184,6 @@ modules:
       - /lib/python3.8/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app --exec-prefix=/bin
-      - export GRAMPSHOME=~/.gramps
       - install -Dm644 /app/share/icons/gramps.png -t /app/share/icons/hicolor/48x48/apps/
       - install -Dm644 /app/share/gramps/images/gramps.svg -t /app/share/icons/hicolor/scalable/apps/
       - install -Dm644 org.gramps_project.Gramps.desktop -t /app/share/applications/
