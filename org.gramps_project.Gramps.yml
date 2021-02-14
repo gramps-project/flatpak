@@ -6,10 +6,12 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 finish-args:
-  - --filesystem=xdg-documents
-  - --filesystem=xdg-download
-  - --filesystem=xdg-pictures
-  - --filesystem=~/.gramps:create
+# Gramps installs media files from backups to home, so it needs home access for now
+#  - --filesystem=xdg-documents
+#  - --filesystem=xdg-download
+#  - --filesystem=xdg-pictures
+#  - --filesystem=~/.gramps:create
+  - --filesystem=home
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
