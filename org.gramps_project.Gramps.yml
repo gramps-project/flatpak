@@ -6,7 +6,7 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 finish-args:
-# for error notifications and to end the canberra-gtk error
+# for error notifications
   - --socket=pulseaudio
 # paths
   - --filesystem=xdg-documents
