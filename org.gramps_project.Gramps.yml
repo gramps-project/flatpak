@@ -57,6 +57,7 @@ modules:
       - --prefix=/app
     make-install-args:
       - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
+      - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
