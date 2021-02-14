@@ -12,6 +12,7 @@ finish-args:
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
   - --filesystem=xdg-pictures
+  - --GRAMPSHOME=$XDG_CONFIG_HOME/gramps
   - --filesystem=~/.gramps:create
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
@@ -40,16 +41,6 @@ modules:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/pygobject/-/archive/pygobject-3-38/pygobject-pygobject-3-38.tar.gz
         sha256:  5b2f653a100fd7b417f40439600330056b99fb7887d8048c24463a38049bcf1b
-
-#  - name: GirDependency
-#    buildsystem: meson
-#    config-opts:
-#      - --prefix=/app
-#      - -Dgir_dir_prefix=/app/lib/python3.8/site-packages/gi/overrides
-#    sources:
-#      - type: archive
-#        url:  https://gitlab.gnome.org/GNOME/gobject-introspection/-/archive/gnome-3-38/gobject-introspection-gnome-3-38.tar.gz
-#        sha256:  072e0e968c357b34017854f70b018c5c4c0e9affeb5071a9df66da5d2ee96113
 
   - name: GoocanvasDependency
     buildsystem: autotools
