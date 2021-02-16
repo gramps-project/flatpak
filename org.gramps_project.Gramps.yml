@@ -110,6 +110,8 @@ modules:
 
   - name: python3-bsddb
     buildsystem: simple
+    ensure-writable:
+      - /lib/python3.8/site-packages/easy-install.pth
     build-options:
       env:
         BERKELEYDB_DIR: /app
