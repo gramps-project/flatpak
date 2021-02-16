@@ -164,6 +164,14 @@ modules:
          url:  https://github.com/nzjrs/osm-gps-map/releases/download/1.1.0/osm-gps-map-1.1.0.tar.gz
          sha256:  8f2ff865ed9ed9786cc5373c37b341b876958416139d0065ebb785cf88d33586
 
+  # Gramps does not see geocodeglib in platform
+  - name: geocodeglibDependency
+    buildsystem: meson
+    sources:
+      - type: archive
+        url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/master/geocode-glib-master.tar.gz
+        sha256:  46b961cee110b4175a62ef599bd3e590e7ef1e86a345de4e0c04ab74146eddbe
+
   - name: PyICUDependency
     buildsystem: simple
     ensure-writable:
