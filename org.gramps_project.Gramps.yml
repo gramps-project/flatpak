@@ -205,6 +205,25 @@ modules:
         url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.gz
         sha256:  6eaf422f26a81854a230b80fd18aaef7e8d94d661485bd2e97e695b9dce7bf7f
 
+# for network chart addon
+  - name: networkxDependency
+    buildsystem: simple
+    build-commands:
+      -python3 setup.py install --prefix=/app
+    sources:
+      - type: archive
+        url:  https://files.pythonhosted.org/packages/ef/d0/f706a9e5814a42c544fa1b2876fc33e5d17e1f2c92a5361776632c4f41ab/networkx-2.5.tar.gz
+        sha256:  7978955423fbc9639c10498878be59caf99b44dc304c2286162fd24b458c1602
+
+  - name: pyGraphvizDependency
+    buildsystem: simple
+    build-commands:
+      -python3 setup.py install --prefix=/app
+    sources:
+      - type: archive
+        url:  https://files.pythonhosted.org/packages/3a/d6/2c56f09ee83dbebb62c40487e4c972135661b9984fec9b30b77fb497090c/pygraphviz-1.7.zip
+        sha256:  a7bec6609f37cf1e64898c59f075afd659106cf9356c5f387cecaa2e0cdb2304
+
 # Gramps
   - name: Gramps
     buildsystem: simple
