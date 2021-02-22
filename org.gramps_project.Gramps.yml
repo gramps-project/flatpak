@@ -208,6 +208,8 @@ modules:
 # for network chart addon
   - name: networkxDependency
     buildsystem: simple
+    ensure-writable:
+      - /lib/python3.8/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -217,6 +219,8 @@ modules:
 
   - name: pyGraphvizDependency
     buildsystem: simple
+    ensure-writable:
+      - /lib/python3.8/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
