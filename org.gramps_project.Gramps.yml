@@ -209,7 +209,7 @@ modules:
   - name: networkxDependency
     buildsystem: simple
     build-commands:
-      -python3 setup.py install --prefix=/app
+      - python3 setup.py install --prefix=/app
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/ef/d0/f706a9e5814a42c544fa1b2876fc33e5d17e1f2c92a5361776632c4f41ab/networkx-2.5.tar.gz
@@ -218,7 +218,7 @@ modules:
   - name: pyGraphvizDependency
     buildsystem: simple
     build-commands:
-      -python3 setup.py install --prefix=/app
+      - python3 setup.py install --prefix=/app
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/3a/d6/2c56f09ee83dbebb62c40487e4c972135661b9984fec9b30b77fb497090c/pygraphviz-1.7.zip
