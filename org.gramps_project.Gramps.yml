@@ -62,7 +62,7 @@ modules:
         url:  https://download-fallback.gnome.org/sources/pygobject/3.38/pygobject-3.38.0.tar.xz
         sha256:  0372d1bb9122fc19f500a249b1f38c2bb67485000f5887497b4b205b3e7084d5
 
-    # most recent for 202104
+    # Goocanvas 3 does not work with GraphView as of 202104
   - name: GoocanvasDependency
     buildsystem: autotools
     config-opts:
@@ -72,19 +72,27 @@ modules:
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
-        url:  https://download-fallback.gnome.org/sources/goocanvas/3.0/goocanvas-3.0.0.tar.xz
-        sha256:  670a7557fe185c2703a14a07506156eceb7cea3b4bf75076a573f34ac52b401a
-#        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
-#        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
+        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
+        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
 
 # gramps does not seem to recognize enchant2 included with sdk or platform
-# following dependencies are for spell check    
-  - name: enchant-ver1
+# following dependencies are for spell check   
+  # current as of 202104
+  - name: enchant2
     buildsystem: autotools
+    config-opts:
+      - --prefix=/app
     sources:
       - type: archive
-        url: https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz
-        sha256: bef0d9c0fef2e4e8746956b68e4d6c6641f6b85bd2908d91731efb68eba9e3f5
+        url:  https://github.com/AbiWord/enchant/archive/refs/tags/v2.2.15.tar.gz
+        sha256:  85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d
+
+#  - name: enchant-ver1
+#    buildsystem: autotools
+#    sources:
+#      - type: archive
+#        url: https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz
+#        sha256: bef0d9c0fef2e4e8746956b68e4d6c6641f6b85bd2908d91731efb68eba9e3f5
 
   - name: intltool
     buildsystem: autotools
