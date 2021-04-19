@@ -23,7 +23,7 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
-# GNU Revision Control System
+# GNU Revision Control System, current 202104
   - name: RCSDependency
     buildsystem: autotools
     sources:
@@ -31,35 +31,38 @@ modules:
         url:  http://mirror.keystealth.org/gnu/rcs/rcs-5.10.0.tar.xz
         sha256:  3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5
 
-# PILLOW for cropping images, latex support, and addons
+# PILLOW for cropping images, latex support, and addons; current 202104
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/73/59/3192bb3bc554ccbd678bdb32993928cb566dccf32f65dac65ac7e89eb311/Pillow-8.1.0.tar.gz
-        sha256:  887668e792b7edbfb1d3c9d8b5d8c859269a0f0eba4dda562adb95500f60dbba
+        url:  https://files.pythonhosted.org/packages/21/23/af6bac2a601be6670064a817273d4190b79df6f74d8012926a39bc7aa77f/Pillow-8.2.0.tar.gz
+        sha256:  a787ab10d7bb5494e5f76536ac460741788f1fbce851068d73a87ca7c35fc3e1
 
 # following dependencies are for the GraphView Addon
-  - name: PGIDependency
-    buildsystem: simple
-    build-commands:
-      - python3 setup.py install --prefix=/app
-    sources:
-      - type: archive
-        url:  https://github.com/pygobject/pgi/archive/0.0.11.2.tar.gz
-        sha256:  7a1ca8ac4e8bee6b663e6d556ecda8032584de753acd76ab3fc21c4f874fa738
+    # pgi is not maintained as of 2018, github suggests using pygobject instead
+#  - name: PGIDependency
+#    buildsystem: simple
+#    build-commands:
+#      - python3 setup.py install --prefix=/app
+#    sources:
+#      - type: archive
+#        url:  https://github.com/pygobject/pgi/archive/0.0.11.2.tar.gz
+#        sha256:  7a1ca8ac4e8bee6b663e6d556ecda8032584de753acd76ab3fc21c4f874fa738
 
+    # most recent for gnome 3.38 as of 202104
   - name: PygobjectDependency
     buildsystem: meson
     config-opts:
       - --prefix=/app
     sources:
       - type: archive
-        url:  https://gitlab.gnome.org/GNOME/pygobject/-/archive/pygobject-3-38/pygobject-pygobject-3-38.tar.gz
-        sha256:  5b2f653a100fd7b417f40439600330056b99fb7887d8048c24463a38049bcf1b
+        url:  https://download-fallback.gnome.org/sources/pygobject/3.38/pygobject-3.38.0.tar.xz
+        sha256:  0372d1bb9122fc19f500a249b1f38c2bb67485000f5887497b4b205b3e7084d5
 
+    # most recent for 202104
   - name: GoocanvasDependency
     buildsystem: autotools
     config-opts:
@@ -69,10 +72,12 @@ modules:
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
-        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
-        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
+        url:  https://download-fallback.gnome.org/sources/goocanvas/3.0/goocanvas-3.0.0.tar.xz
+        sha256:  670a7557fe185c2703a14a07506156eceb7cea3b4bf75076a573f34ac52b401a
+#        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
+#        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
 
-# gramps 5.1.3 does not seem to recognize enchant2 included with sdk or platform
+# gramps does not seem to recognize enchant2 included with sdk or platform
 # following dependencies are for spell check    
   - name: enchant-ver1
     buildsystem: autotools
@@ -214,7 +219,7 @@ modules:
       - python3 setup.py install --prefix=/app
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/da/93/84fa12f2dc341f8cf5f022ee09e109961055749df2d0c75c5f98746cfe6c/decorator-4.4.2.tar.gz#sha256=e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7
+        url:  https://files.pythonhosted.org/packages/da/93/84fa12f2dc341f8cf5f022ee09e109961055749df2d0c75c5f98746cfe6c/decorator-4.4.2.tar.gz
         sha256:  e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7
 
   - name: networkxDependency
