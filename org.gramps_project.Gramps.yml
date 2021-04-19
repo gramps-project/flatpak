@@ -94,6 +94,7 @@ modules:
 #        url: https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz
 #        sha256: bef0d9c0fef2e4e8746956b68e4d6c6641f6b85bd2908d91731efb68eba9e3f5
 
+    # intltool most recent version as of 202104 was from 2015
   - name: intltool
     buildsystem: autotools
     sources:
@@ -101,6 +102,7 @@ modules:
         url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
         sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
 
+    # GTK-Spell most recent version as of 202104 was from 2018
   - name: gtk-spell
     buildsystem: autotools
     sources:
@@ -108,7 +110,7 @@ modules:
         url: https://sourceforge.net/projects/gtkspell/files/3.0.10/gtkspell3-3.0.10.tar.xz
         sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
 
-# following dependencies are for the old Berkeley database
+# following dependencies are for the old Berkeley database, Oracle took over in later versions
   - name: BSDDB3
     subdir: dist
     builddir: true
