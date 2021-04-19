@@ -77,30 +77,13 @@ modules:
 
 # gramps does not seem to recognize enchant2 included with sdk or platform
 # following dependencies are for spell check
-
-  # enchant tried to install gnulib, which only releases from source
-  - name: gnulib
-    buildsystem: simple
-    sources:
-      - type: git
-        url:  https://git.savannah.gnu.org/git/gnulib.git
-
-  # current as of 202104
-  - name: enchant2
+    # enchant2 requires gnulib, which I have difficulty compiling into flatpak.  So enchant1 is used.
+  - name: enchant-ver1
     buildsystem: autotools
-    config-opts:
-      - --prefix=/app
     sources:
       - type: archive
-        url:  https://github.com/AbiWord/enchant/archive/refs/tags/v2.2.15.tar.gz
-        sha256:  85295934102a4ab94f209cbc7c956affcb2834e7a5fb2101e2db436365e2922d
-
-#  - name: enchant-ver1
-#    buildsystem: autotools
-#    sources:
-#      - type: archive
-#        url: https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz
-#        sha256: bef0d9c0fef2e4e8746956b68e4d6c6641f6b85bd2908d91731efb68eba9e3f5
+        url: https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz
+        sha256: bef0d9c0fef2e4e8746956b68e4d6c6641f6b85bd2908d91731efb68eba9e3f5
 
     # intltool most recent version as of 202104 was from 2015
   - name: intltool
