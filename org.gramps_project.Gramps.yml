@@ -80,6 +80,7 @@ modules:
 
   # enchant tried to install gnulib, which only releases from source
   - name: gnulib
+    buildsystem: simple
     sources:
       - type: git
         url:  https://git.savannah.gnu.org/git/gnulib.git
