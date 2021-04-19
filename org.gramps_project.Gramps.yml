@@ -81,7 +81,7 @@ modules:
   # enchant tried to install gnulib, which only releases from source
   - name: gnulib
     sources:
-      - type: archive
+      - type: git
         url:  https://git.savannah.gnu.org/git/gnulib.git
 
   # current as of 202104
