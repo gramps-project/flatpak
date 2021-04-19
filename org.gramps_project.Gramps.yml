@@ -78,15 +78,11 @@ modules:
 # gramps does not seem to recognize enchant2 included with sdk or platform
 # following dependencies are for spell check
 
-  # enchant tried to install gnulib, so here is the Debian source for Bullseye current in 202104
+  # enchant tried to install gnulib, which only releases from source
   - name: gnulib
-    buildsystem: autotools
-    config-opts:
-      - --prefix=/app
     sources:
       - type: archive
-        url:  http://deb.debian.org/debian/pool/main/g/gnulib/gnulib_20210102~ebaa53c.orig.tar.gz
-        sha256:  77ab6fad589590c27cb69572be14b5dc1d480b890eccb1e4036bb412c127cb55
+        url:  https://git.savannah.gnu.org/git/gnulib.git
 
   # current as of 202104
   - name: enchant2
