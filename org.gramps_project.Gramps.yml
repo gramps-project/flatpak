@@ -182,7 +182,8 @@ modules:
         url:  https://github.com/nzjrs/osm-gps-map/releases/download/1.2.0/osm-gps-map-1.2.0.tar.gz
         sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
 
-  # Gramps does not see geocodeglib in platform, needed for place coordinate addon
+    # Gramps does not see geocodeglib in platform, needed for place coordinate addon
+    # appears to not have versioned releases anymore, last git edit as of 202104 was from 202005
   - name: geocodeglibDependency
     buildsystem: meson
     sources:
@@ -190,6 +191,7 @@ modules:
         url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/master/geocode-glib-master.tar.gz
         sha256:  46b961cee110b4175a62ef599bd3e590e7ef1e86a345de4e0c04ab74146eddbe
 
+    # pyicu most recent release as of 202104 was from 202104
   - name: PyICUDependency
     buildsystem: simple
     ensure-writable:
@@ -198,24 +200,27 @@ modules:
       - python3 setup.py install --prefix=/app
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/31/46/fa08c8efae2951e67681ec24319f789fc1a74e2096dd74373e34c79319de/PyICU-2.6.tar.gz
-        sha256:  a9a5bf6833360f8f69e9375b91c1a7dd6e0c9157a42aee5bb7d6891804d96371
+        url:  https://files.pythonhosted.org/packages/17/0f/9d6b7eb01650960239a5d4dc21cd6e7a96921807c043d287bae4b2f440e1/PyICU-2.7.2.tar.gz
+        sha256:  1382869b22d91cc99274f9b525fa7d9199b44d9007ff0036a09747839a01e9dc
 
+    # graphviz most recent version as of 202104 from 202104
   - name: GraphVizDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://www2.graphviz.org/Packages/stable/portable_source/graphviz-2.44.0.tar.gz
-        sha256:  9aabd13a8018b708ab3c822de2326c19d0a52ed59f50a6b0f9318c07e2a6d93b
+        url: https://gitlab.com/graphviz/graphviz/-/archive/2.47.1/graphviz-2.47.1.tar.gz
+        sha256:  b7f4d6819e4dc17c15e7e07bd1ea5e081ef6569b63f8427117dac32f0e3837b4
 
+    # ghostscript most recent version as of 202104 was from 202103
   - name: GhostscriptDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9533/ghostscript-9.53.3.tar.gz
-        sha256:  6eaf422f26a81854a230b80fd18aaef7e8d94d661485bd2e97e695b9dce7bf7f
+        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostpdl-9.54.0.tar.gz
+        sha256:  0646bb97f6f4d10a763f4919c54fa28b4fbdd3dff8e7de3410431c81762cade0
 
 # for network chart addon
+    # decorator most recent version as of 202104 was from 202104
   - name: decoratorDependency
     buildsystem: simple
     ensure-writable:
@@ -224,9 +229,10 @@ modules:
       - python3 setup.py install --prefix=/app
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/da/93/84fa12f2dc341f8cf5f022ee09e109961055749df2d0c75c5f98746cfe6c/decorator-4.4.2.tar.gz
-        sha256:  e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7
+        url:  https://files.pythonhosted.org/packages/a9/09/dd085a8afcf48fdaba851fe10956d5dbf1e9091206f7ca717223563f75c2/decorator-5.0.7.tar.gz
+        sha256:  6f201a6c4dac3d187352661f508b9364ec8091217442c9478f1f83c003a0f060
 
+    # networkx most recent stable version as of 202104 was from 202008
   - name: networkxDependency
     buildsystem: simple
     ensure-writable:
@@ -238,6 +244,7 @@ modules:
         url:  https://files.pythonhosted.org/packages/ef/d0/f706a9e5814a42c544fa1b2876fc33e5d17e1f2c92a5361776632c4f41ab/networkx-2.5.tar.gz
         sha256:  7978955423fbc9639c10498878be59caf99b44dc304c2286162fd24b458c1602
 
+    # pygraphviz most recent stable version as of 202104 was from 202102
   - name: pyGraphvizDependency
     buildsystem: simple
     ensure-writable:
