@@ -216,7 +216,7 @@ modules:
     buildsystem: autotools
     sources:
       - type: archive
-        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostpdl-9.54.0.tar.gz
+        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.gz
         sha256:  0646bb97f6f4d10a763f4919c54fa28b4fbdd3dff8e7de3410431c81762cade0
 
 # for network chart addon
