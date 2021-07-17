@@ -23,7 +23,6 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
-# librsvg2 is not seen in the platform and requires old, unmaintained binaries.  not sure whether to use.
 # GNU Revision Control System, most recent version as of 202107 is from 202010
   - name: RCSDependency
     buildsystem: autotools
@@ -31,6 +30,13 @@ modules:
       - type: archive
         url:  http://mirror.keystealth.org/gnu/rcs/rcs-5.10.0.tar.xz
         sha256:  3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5
+
+  - name: librsvgDependency
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url:  https://download-fallback.gnome.org/sources/librsvg/2.51/librsvg-2.51.4.tar.xz
+        sha256:  0b87d61de9b973aac1fdb9583368b9a893e67f5f7cb75c3e8f7de142557aca00
 
 # PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
   - name: PILLOWDependency
