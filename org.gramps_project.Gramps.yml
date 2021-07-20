@@ -16,6 +16,7 @@ finish-args:
   - --filesystem=home
 # test to see if it needs access to Gnome Platform libraries
   - --filesystem=/usr/lib/x86_64-linux-gnu:ro
+  - --filesystem=/var/lib/flatpak/runtime/:ro
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
