@@ -14,6 +14,7 @@ finish-args:
   - --filesystem=home
 # test to see if it needs access to Gnome Platform libraries
   - --filesystem=xdg-run/var/lib/flatpak/runtime/
+  - --filesystem=host
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
