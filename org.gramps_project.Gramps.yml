@@ -87,6 +87,8 @@ modules:
 
   - name: pyenchantDependency
     buildsystem: simple
+    build-commands:
+      - python3 setup.py install --prefix=/app
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/63/c3/074c9c4d6c39b26e8d06316b698995ee11ccfe0332f684d133f33126bd69/pyenchant-3.2.1.tar.gz
