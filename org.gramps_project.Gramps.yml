@@ -13,7 +13,7 @@ finish-args:
 #  - --filesystem=~/.gramps:create
   - --filesystem=home
 # test to see if it needs access to Gnome Platform libraries
-  - --filesystem=xdg-run/var/lib/flatpak/runtime/
+  - --filesystem=xdg-run/usr/lib/x86_64-linux-gnu/
   - --filesystem=host
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
