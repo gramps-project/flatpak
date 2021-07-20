@@ -6,8 +6,6 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 finish-args:
-# for error notifications
-  - --socket=pulseaudio
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
 #  - --filesystem=xdg-download
@@ -15,14 +13,12 @@ finish-args:
 #  - --filesystem=~/.gramps:create
   - --filesystem=home
 # test to see if it needs access to Gnome Platform libraries
-  - --filesystem=/usr/lib/x86_64-linux-gnu:ro
-  - --filesystem=/var/lib/flatpak/runtime/:ro
+  - --xdg-run=/var/lib/flatpak/runtime/
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
   - --socket=wayland
   - --socket=fallback-x11
-  - --share=ipc
 #needs network access for maps
   - --share=network
 modules:
