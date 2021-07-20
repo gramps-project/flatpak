@@ -77,14 +77,7 @@ modules:
 
 # gramps does not seem to recognize enchant2 included with sdk or platform
 # following dependencies are for spell check
-    # enchant2 requires gnulib, which I have difficulty compiling into flatpak.  So enchant1 is used.
-#  - name: enchant-ver1
-#    buildsystem: autotools
-#    sources:
-#      - type: archive
-#        url: https://github.com/AbiWord/enchant/releases/download/enchant-1-6-1/enchant-1.6.1.tar.gz
-#        sha256: bef0d9c0fef2e4e8746956b68e4d6c6641f6b85bd2908d91731efb68eba9e3f5
-
+  # pyenchant most recent version as of 202107 was from 202106
   - name: pyenchantDependency
     buildsystem: simple
     ensure-writable:
