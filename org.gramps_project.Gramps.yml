@@ -41,27 +41,6 @@ modules:
         url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
         sha256:  2cac53839bfc5cece8fdbe7f084d5e3ee61e1303cccc86511d351adcb9e2c792
 
-# following dependencies are for the GraphView Addon
-    # pgi is not maintained as of 2018, github suggests using pygobject instead
-  - name: PGIDependency
-    buildsystem: simple
-    build-commands:
-      - python3 setup.py install --prefix=/app
-    sources:
-      - type: archive
-        url:  https://github.com/pygobject/pgi/archive/0.0.11.2.tar.gz
-        sha256:  7a1ca8ac4e8bee6b663e6d556ecda8032584de753acd76ab3fc21c4f874fa738
-
-    # most recent for gnome 3.38 as of 202104
-  - name: PygobjectDependency
-    buildsystem: meson
-    config-opts:
-      - --prefix=/app
-    sources:
-      - type: archive
-        url:  https://download-fallback.gnome.org/sources/pygobject/3.38/pygobject-3.38.0.tar.xz
-        sha256:  0372d1bb9122fc19f500a249b1f38c2bb67485000f5887497b4b205b3e7084d5
-
     # Goocanvas 3 does not work with GraphView as of 202104
   - name: GoocanvasDependency
     buildsystem: autotools
