@@ -12,9 +12,6 @@ finish-args:
 #  - --filesystem=xdg-pictures
 #  - --filesystem=~/.gramps:create
   - --filesystem=home
-# test to see if it needs access to Gnome Platform libraries
-  - --filesystem=xdg-run/usr/lib/x86_64-linux-gnu/
-  - --filesystem=host
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
@@ -54,7 +51,6 @@ modules:
         url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
         sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
 
-# gramps does not seem to recognize enchant2 included with sdk or platform
 # following dependencies are for spell check
   # pyenchant most recent version as of 202107 was from 202106
   - name: pyenchantDependency
