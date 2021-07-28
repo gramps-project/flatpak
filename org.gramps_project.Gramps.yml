@@ -17,6 +17,7 @@ finish-args:
 # for gui
   - --socket=wayland
   - --socket=fallback-x11
+  - --share=ipc
 #needs network access for maps
   - --share=network
 modules:
