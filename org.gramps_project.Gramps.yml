@@ -21,12 +21,12 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
-# GNU Revision Control System, most recent version as of 202107 is from 202010
+# GNU Revision Control System, most recent version as of 202111 is from 202010
   - name: RCSDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url:  http://mirror.keystealth.org/gnu/rcs/rcs-5.10.0.tar.xz
+        url:  https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
         sha256:  3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5
 
 # PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
