@@ -45,7 +45,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.9/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
@@ -57,7 +57,7 @@ modules:
   - name: pyenchantDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -105,7 +105,7 @@ modules:
   - name: python3-bsddb
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-options:
       env:
         BERKELEYDB_DIR: /app
@@ -135,7 +135,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib/python3.8/site-packages/gi/overrides
+      - -Dpython3_girdir=/app/lib/python3.9/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download-fallback.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
@@ -146,7 +146,7 @@ modules:
   - name: python-fontconfig
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -175,7 +175,7 @@ modules:
   - name: PyICUDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -204,7 +204,7 @@ modules:
   - name: decoratorDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -216,7 +216,7 @@ modules:
   - name: networkxDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -228,7 +228,7 @@ modules:
   - name: pyGraphvizDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -240,7 +240,7 @@ modules:
   - name: Gramps
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app --exec-prefix=/usr/lib/x86_64-linux-gnu/
       - install -Dm644 org.gramps_project.Gramps.desktop -t /app/share/applications/
