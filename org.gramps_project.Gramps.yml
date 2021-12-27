@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '3.38'
+runtime-version: '41'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
@@ -21,12 +21,12 @@ finish-args:
 #needs network access for maps
   - --share=network
 modules:
-# GNU Revision Control System, most recent version as of 202107 is from 202010
+# GNU Revision Control System, most recent version as of 202111 is from 202010
   - name: RCSDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url:  http://mirror.keystealth.org/gnu/rcs/rcs-5.10.0.tar.xz
+        url:  https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
         sha256:  3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5
 
 # PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
@@ -45,7 +45,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.9/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
@@ -57,7 +57,7 @@ modules:
   - name: pyenchantDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -105,7 +105,7 @@ modules:
   - name: python3-bsddb
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-options:
       env:
         BERKELEYDB_DIR: /app
@@ -135,7 +135,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib/python3.8/site-packages/gi/overrides
+      - -Dpython3_girdir=/app/lib/python3.9/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download-fallback.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
@@ -146,7 +146,7 @@ modules:
   - name: python-fontconfig
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -163,19 +163,19 @@ modules:
         sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
 
     # Gramps does not see geocodeglib in platform, needed for place coordinate addon
-    # appears to not have versioned releases anymore, last git edit as of 202104 was from 202005
+    # appears to not have versioned releases anymore, last git edit as of 202110 was from 202109
   - name: geocodeglibDependency
     buildsystem: meson
     sources:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/master/geocode-glib-master.tar.gz
-        sha256:  46b961cee110b4175a62ef599bd3e590e7ef1e86a345de4e0c04ab74146eddbe
+        sha256:  d2cfc8b096f112ad2446278e19473d316a048ed457f6349a05e68cc128a57f2d
 
     # pyicu most recent release as of 202104 was from 202104
   - name: PyICUDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -204,7 +204,7 @@ modules:
   - name: decoratorDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -216,7 +216,7 @@ modules:
   - name: networkxDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -228,7 +228,7 @@ modules:
   - name: pyGraphvizDependency
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
     sources:
@@ -240,7 +240,7 @@ modules:
   - name: Gramps
     buildsystem: simple
     ensure-writable:
-      - /lib/python3.8/site-packages/easy-install.pth
+      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app --exec-prefix=/usr/lib/x86_64-linux-gnu/
       - install -Dm644 org.gramps_project.Gramps.desktop -t /app/share/applications/
