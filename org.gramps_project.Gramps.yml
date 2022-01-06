@@ -5,6 +5,7 @@ runtime-version: '41'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
+rename-desktop-file: gramps.desktop
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
@@ -66,12 +67,7 @@ modules:
         sha256:  5e206a1d6596904a922496f6c9f7d0b964b243905f401f5f2f40ea4d1f74e2cf
 
     # intltool most recent version as of 202104 was from 2015
-  - name: intltool
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
-        sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
+  - shared-modules/intltool/intltool-0.51.json
 
     # GTK-Spell most recent version as of 202104 was from 2018
   - name: gtk-spell
@@ -118,18 +114,15 @@ modules:
         sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
 
 # following dependencies are for images
-    # exiv2 most recent version was from 202006 as of 202104
-  - name: exiv2Dependency
-    buildsystem: cmake
+    # exiv2 most recent version was from 202110 as of 202201
+  - name: exiv2
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: archive
-        url:  https://www.exiv2.org/builds/exiv2-0.27.3-Source.tar.gz
-        sha256:  a79f5613812aa21755d578a297874fb59a85101e793edc64ec2c6bd994e3e778
-        # for arm64 compatibility
-      - type: patch
-        path: exiv2-arch-flags.patch
-      - type: patch
-        path: exiv2-arch-flags-2.patch
+        url:  https://www.exiv2.org/builds/exiv2-0.27.5-Source.tar.gz
+        sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
 
     # gexiv2 most recent version as of 202104 was from 202102
   - name: gexiv2Dependency
@@ -242,14 +235,12 @@ modules:
     ensure-writable:
       - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py install --prefix=/app --exec-prefix=/usr/lib/x86_64-linux-gnu/
-      - install -Dm644 org.gramps_project.Gramps.desktop -t /app/share/applications/
+      - python3 setup.py install --prefix=/app
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
+      - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
         url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.4.tar.gz
         sha256:  6e64a5c1175a4897256ca9eb73a4b77c8e84ebff020b8668bdc527d6dcd14273
-      - type: file
-        path:  org.gramps_project.Gramps.desktop
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
