@@ -67,8 +67,13 @@ modules:
         sha256:  5e206a1d6596904a922496f6c9f7d0b964b243905f401f5f2f40ea4d1f74e2cf
 
     # intltool most recent version as of 202104 was from 2015
-  - shared-modules/intltool/intltool-0.51.json
-
+  - name: intltool
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
+        sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
+        
     # GTK-Spell most recent version as of 202104 was from 2018
   - name: gtk-spell
     buildsystem: autotools
