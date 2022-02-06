@@ -34,11 +34,11 @@ modules:
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST Pillow-8.3.1.tar.gz
-    sources:
-      - type: archive
-        url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
-        sha256:  2cac53839bfc5cece8fdbe7f084d5e3ee61e1303cccc86511d351adcb9e2c792
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST Pillow==8.3.1
+#    sources:
+#      - type: archive
+#        url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
+#        sha256:  2cac53839bfc5cece8fdbe7f084d5e3ee61e1303cccc86511d351adcb9e2c792
 
     # Goocanvas 3 does not work with GraphView as of 202104
   - name: GoocanvasDependency
