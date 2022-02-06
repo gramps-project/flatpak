@@ -34,7 +34,7 @@ modules:
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST Pillow
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
@@ -57,10 +57,10 @@ modules:
   # pyenchant most recent version as of 202107 was from 202106
   - name: pyenchantDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST pyenchant
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/63/c3/074c9c4d6c39b26e8d06316b698995ee11ccfe0332f684d133f33126bd69/pyenchant-3.2.1.tar.gz
@@ -105,13 +105,13 @@ modules:
 
   - name: python3-bsddb
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-options:
       env:
         BERKELEYDB_DIR: /app
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST python3-bsddb
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
@@ -142,10 +142,10 @@ modules:
     # python-fontconfig most recent version as of 202104 was 201909
   - name: python-fontconfig
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST Python-fontconfig
     sources:
       - type: archive
         url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
@@ -171,10 +171,10 @@ modules:
     # pyicu most recent release as of 202104 was from 202104
   - name: PyICUDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST PyICU
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/17/0f/9d6b7eb01650960239a5d4dc21cd6e7a96921807c043d287bae4b2f440e1/PyICU-2.7.2.tar.gz
@@ -200,10 +200,10 @@ modules:
     # decorator most recent version as of 202104 was from 202104
   - name: decoratorDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST decorator
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/a9/09/dd085a8afcf48fdaba851fe10956d5dbf1e9091206f7ca717223563f75c2/decorator-5.0.7.tar.gz
@@ -212,8 +212,8 @@ modules:
     # networkx most recent stable version as of 202104 was from 202008
   - name: networkxDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
     sources:
@@ -224,10 +224,10 @@ modules:
     # pygraphviz most recent stable version as of 202104 was from 202102
   - name: pyGraphvizDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST networkx
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/3a/d6/2c56f09ee83dbebb62c40487e4c972135661b9984fec9b30b77fb497090c/pygraphviz-1.7.zip
@@ -236,10 +236,10 @@ modules:
 # Gramps
   - name: Gramps
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
+#    ensure-writable:
+#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST gramps
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
