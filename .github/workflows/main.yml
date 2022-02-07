@@ -24,7 +24,7 @@ jobs:
 
     - name: BuildFlatpak
       run: |
-        flatpak-builder --repo=repo --force-clean --no-debuginfo build-dir org.gramps_project.Gramps.yml
+        flatpak-builder --repo=repo --force-clean --no-debuginfo=true build-dir org.gramps_project.Gramps.yml
 
     - name: BuildBundle
       run: |
