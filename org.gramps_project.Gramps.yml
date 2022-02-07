@@ -7,7 +7,8 @@ command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
 build-options:
-  - --no-debuginfo=true
+  env:
+    - --no-debuginfo=true
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
@@ -27,7 +28,9 @@ modules:
 # GNU Revision Control System, most recent version as of 202111 is from 202010
   - name: RCSDependency
     buildsystem: autotools
-    build-options: no-debuginfo=true
+    build-options: 
+      env:
+        - no-debuginfo=true
     sources:
       - type: archive
         url:  https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
