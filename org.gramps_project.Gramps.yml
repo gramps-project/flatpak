@@ -6,6 +6,8 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
+build-options:
+  - no-debuginfo=true
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
@@ -34,7 +36,7 @@ modules:
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --no-debuginfo=true --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
