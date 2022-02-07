@@ -111,7 +111,7 @@ modules:
       env:
         BERKELEYDB_DIR: /app
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - pip3 install --no-deps --no-use-pep517 .
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
