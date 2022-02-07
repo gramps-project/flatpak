@@ -6,6 +6,7 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
+# no-debuginfo to prevent Github Actions workflow from getting stuck in a loop
 build-options:
   no-debuginfo: true
 finish-args:
@@ -27,9 +28,6 @@ modules:
 # GNU Revision Control System, most recent version as of 202111 is from 202010
   - name: RCSDependency
     buildsystem: autotools
-    build-options: 
-      env:
-        - no-debuginfo=true
     sources:
       - type: archive
         url:  https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
@@ -62,8 +60,6 @@ modules:
   # pyenchant most recent version as of 202107 was from 202106
   - name: pyenchantDependency
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
@@ -110,8 +106,6 @@ modules:
 
   - name: python3-bsddb
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-options:
       env:
         BERKELEYDB_DIR: /app
@@ -147,8 +141,6 @@ modules:
     # python-fontconfig most recent version as of 202104 was 201909
   - name: python-fontconfig
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
@@ -176,8 +168,6 @@ modules:
     # pyicu most recent release as of 202104 was from 202104
   - name: PyICUDependency
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
@@ -205,8 +195,6 @@ modules:
     # decorator most recent version as of 202104 was from 202104
   - name: decoratorDependency
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
@@ -217,8 +205,6 @@ modules:
     # networkx most recent stable version as of 202104 was from 202008
   - name: networkxDependency
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
@@ -229,8 +215,6 @@ modules:
     # pygraphviz most recent stable version as of 202104 was from 202102
   - name: pyGraphvizDependency
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
@@ -241,8 +225,6 @@ modules:
 # Gramps
   - name: Gramps
     buildsystem: simple
-#    ensure-writable:
-#      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
