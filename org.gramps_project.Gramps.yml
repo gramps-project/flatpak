@@ -8,7 +8,7 @@ rename-icon: gramps
 rename-desktop-file: gramps.desktop
 build-options:
   env:
-    - --no-debuginfo=true
+    no-debuginfo: true
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
