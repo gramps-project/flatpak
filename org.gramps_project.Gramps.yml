@@ -107,6 +107,7 @@ modules:
   - name: python3-bsddb
     buildsystem: simple
     build-options:
+      no-debuginfo: true
       env:
         BERKELEYDB_DIR: /app
     build-commands:
