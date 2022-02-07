@@ -15,7 +15,7 @@ jobs:
     - name: InstallFlatpak
       run: |
         sudo apt update
-        sudo apt install flatpak flatpak-builder
+        sudo apt install flatpak flatpak-builder python3-pip
 
     - name: SetupFlatpak
       run: |
