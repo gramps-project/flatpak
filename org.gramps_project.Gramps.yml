@@ -123,7 +123,7 @@ modules:
       env:
         BERKELEYDB_DIR: /app
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 .
+      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/c2/3f/a96d5caff3bbf0980fb47518ddb015a1df291f5ef31ee8c50ead21cb513a/berkeleydb-18.1.5.tar.gz
