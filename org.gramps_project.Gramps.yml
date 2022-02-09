@@ -88,6 +88,7 @@ modules:
     subdir: dist
     builddir: true
     config-opts:
+      - --DOCS=off
       - --enable-compat185
       - --enable-shared
       - --enable-cxx
