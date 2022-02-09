@@ -88,7 +88,7 @@ modules:
     subdir: dist
     builddir: true
     config-opts:
-      - --docdir=/app/share
+      - docdir=/app/share
       - --enable-compat185
       - --enable-shared
       - --enable-cxx
