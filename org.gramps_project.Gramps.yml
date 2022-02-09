@@ -104,40 +104,19 @@ modules:
         commands:
           - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
-   #python3-bsddb deprecated and does not work with python3.9, must use berkeleydb
-#  - name: python3-bsddb
-#    buildsystem: simple
-#    build-options:
-#      no-debuginfo: true
-#      env:
-#        BERKELEYDB_DIR: /app
-#    build-commands:
-#      - pip3 install --no-deps --no-use-pep517 .
-#    sources:
-#      - type: archive
-#        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
-#        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
-  # berkeleydb requires setuptools
-  - name: setuptools
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/56/4a/8ba3babea25b807d6f65258437d8d3bed6a820e4a7166f322ebb60d2d127/setuptools-60.8.1.tar.gz
-        sha256: 23aad87cc27f4ae704079618c1d117a71bd43d41e355f0698c35f6b1c796d26c
-
-  - name: berkeleydbDependency
+   #python3-bsddb deprecated and does not work after python3.9, must use berkeleydb
+  - name: python3-bsddb
     buildsystem: simple
     build-options:
+      no-debuginfo: true
       env:
         BERKELEYDB_DIR: /app
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 .
     sources:
       - type: archive
-        url: https://files.pythonhosted.org/packages/c2/3f/a96d5caff3bbf0980fb47518ddb015a1df291f5ef31ee8c50ead21cb513a/berkeleydb-18.1.5.tar.gz
-        sha256: d8c2efbca9472f8848b13cce4f4904a5ea1e1540ee576e626a1491817832a50a
+        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
+        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
 
 # following dependencies are for images
     # exiv2 most recent version was from 202110 as of 202201
