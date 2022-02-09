@@ -86,7 +86,7 @@ modules:
 # following dependencies are for the old Berkeley database, Oracle took over in later versions
   - name: BSDDB3
     ensure-writable:
-      - /app/docs
+      - /docs
     subdir: dist
     builddir: true
     config-opts:
