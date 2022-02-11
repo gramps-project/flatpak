@@ -8,12 +8,13 @@ on:
 jobs:
   flatpak:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: InstallFlatpak
       run: |
+        sudo add-apt-repository ppa:flatpak/stable
         sudo apt update
         sudo apt install flatpak flatpak-builder python3-pip
 
