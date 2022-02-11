@@ -229,7 +229,7 @@ modules:
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.4.tar.gz
-        sha256:  6e64a5c1175a4897256ca9eb73a4b77c8e84ebff020b8668bdc527d6dcd14273
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.5.tar.gz
+        sha256:  4045a142a7c3cbe50a41e594bb160dce4112e37ef7dec68d65af42e9269c2df6
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
