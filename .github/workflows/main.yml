@@ -17,7 +17,6 @@ jobs:
         sudo add-apt-repository ppa:flatpak/stable
         sudo apt update
         sudo apt install flatpak flatpak-builder python3-pip
-        sudo reboot
 
     - name: SetupFlatpak
       run: |
