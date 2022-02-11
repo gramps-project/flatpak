@@ -6,9 +6,9 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
-# no-debuginfo to prevent Github Actions workflow from getting stuck in a loop
-# build-options:
-#  no-debuginfo: true
+# no-debuginfo to prevent Github Actions workflow from getting stuck, it causes errors
+build-options:
+  no-debuginfo: true
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
@@ -90,7 +90,7 @@ modules:
       - cd build_unix
       - ./dist/configure --prefix=/app --enable-compat185 --enable-shared --enable-cxx -enable-dbm --enable-stl
       - make
-      - make docdir=/app/share/man install
+      - make docdir=/app/share install
     sources:
       - type: archive
         url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
@@ -103,7 +103,7 @@ modules:
   - name: python3-bsddb
     buildsystem: simple
     build-options:
-#      no-debuginfo: true
+      no-debuginfo: true
       env:
         BERKELEYDB_DIR: /app
     build-commands:
