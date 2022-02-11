@@ -84,34 +84,34 @@ modules:
         sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
 
 # following dependencies are for the old Berkeley database, Oracle took over in later versions
-  - name: BSDDB3
-    buildsystem: simple
-    build-commands:
-      - cd build_unix
-      - ./dist/configure --prefix=/app --enable-compat185 --enable-shared --enable-cxx -enable-dbm --enable-stl
-      - make
-      - make docdir=/app/share install
-    sources:
-      - type: archive
-        url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
-        sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
-      - type: patch
-        path: atomic.patch
+#  - name: BSDDB3
+#    buildsystem: simple
+#    build-commands:
+#      - cd build_unix
+#      - ./dist/configure --prefix=/app --enable-compat185 --enable-shared --enable-cxx -enable-dbm --enable-stl
+#      - make
+#      - make docdir=/app/share install
+#    sources:
+#      - type: archive
+#        url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
+#        sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
+#      - type: patch
+#        path: atomic.patch
         # for aarch64 
 
    #python3-bsddb deprecated and does not work after python3.9, must use berkeleydb
-  - name: python3-bsddb
-    buildsystem: simple
-    build-options:
-      no-debuginfo: true
-      env:
-        BERKELEYDB_DIR: /app
-    build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
-        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
+#  - name: python3-bsddb
+#    buildsystem: simple
+#    build-options:
+#      no-debuginfo: true
+#      env:
+#        BERKELEYDB_DIR: /app
+#    build-commands:
+#      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+#    sources:
+#      - type: archive
+#        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
+#        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
 
 # following dependencies are for images
     # exiv2 most recent version was from 202110 as of 202201
