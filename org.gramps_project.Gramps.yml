@@ -146,12 +146,12 @@ modules:
         sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
 
     # osmgpsmap most recent version as of 202104 was from 202102
-  - name: osmgpsmapDependency
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url:  https://github.com/nzjrs/osm-gps-map/releases/download/1.2.0/osm-gps-map-1.2.0.tar.gz
-        sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
+#  - name: osmgpsmapDependency
+#    buildsystem: autotools
+#    sources:
+#      - type: archive
+#        url:  https://github.com/nzjrs/osm-gps-map/releases/download/1.2.0/osm-gps-map-1.2.0.tar.gz
+#        sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
 
     # Gramps does not see geocodeglib in platform, needed for place coordinate addon
     # appears to not have versioned releases anymore, last git edit as of 202110 was from 202109
