@@ -90,7 +90,7 @@ modules:
       - cd build_unix
       - ./dist/configure --prefix=/app --enable-compat185 --enable-shared --enable-cxx -enable-dbm --enable-stl
       - make
-      - make docdir=/share/man install
+      - make docdir=/app/share/man install
     sources:
       - type: archive
         url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
