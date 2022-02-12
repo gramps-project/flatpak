@@ -226,7 +226,7 @@ modules:
     build-options:
       env:
         GRAMPS_RESOURCES: /app/lib
-        PYTHONPATH: $GRAMPS_RESOURCES:$PYTHONPATH
+        PYTHONPATH: /app/lib/python3.9/site-packages/gramps
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
