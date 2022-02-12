@@ -223,6 +223,10 @@ modules:
 # Gramps
   - name: Gramps
     buildsystem: simple
+    build-options:
+      env:
+        GRAMPS_RESOURCES: /app/lib
+        PYTHONPATH: $GRAMPS_RESOURCES:$PYTHONPATH
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
