@@ -223,9 +223,9 @@ modules:
 # Gramps
   - name: Gramps
     buildsystem: simple
-    config-opts:
-      - --GRAMPS_RESOURCES=/app/share/gramps
-      - --PYTHONPATH=/app/lib/python3.9/site-packages/gramps
+#    config-opts:
+#      - --GRAMPS_RESOURCES=/app/share/gramps
+#      - --PYTHONPATH=/app/lib/python3.9/site-packages/gramps
 #    build-options:
 #      env:
 #        GRAMPS_RESOURCES: /app/share/gramps
@@ -233,6 +233,7 @@ modules:
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
+      - install -Dm644 org.gramps_project.Gramps.desktop -t /app/share/applications/
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
@@ -240,3 +241,5 @@ modules:
         sha256:  4045a142a7c3cbe50a41e594bb160dce4112e37ef7dec68d65af42e9269c2df6
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
+      - type: file
+        path:  org.gramps_project.Gramps.desktop
