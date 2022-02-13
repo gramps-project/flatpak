@@ -179,4 +179,4 @@ Keywords[zh_CN]=Genealogy;家谱;族谱;宗谱;Family History;家族史;Research
 Keywords[zh_HK]=Genealogy;家譜;族譜;宗譜;Family History;家族史;Research;研究;Family Tree;家族樹;家庭樹;GEDCOM;
 Keywords[zh_TW]=Genealogy;家譜;族譜;宗譜;Family History;家族史;Research;研究;Family Tree;家族樹;家庭樹;GEDCOM;
 MimeType=application/x-gramps;application/x-gedcom;application/x-gramps-package;application/x-gramps-xml;
-Exec=GRAMPS_RESOURCES="/app/share/gramps" PYTHONPATH="/app/lib/python3.9/site-packages/gramps" gramps
+Exec="env GRAMPS_RESOURCES="/app/share/gramps" PYTHONPATH="/app/lib/python3.9/site-packages/gramps" gramps"
