@@ -5,7 +5,7 @@ runtime-version: '41'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
-# rename-desktop-file: gramps.desktop
+rename-desktop-file: gramps.desktop
 # no-debuginfo to prevent Github Actions workflow from getting stuck, it causes errors
 build-options:
   no-debuginfo: true
@@ -233,7 +233,7 @@ modules:
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
-      - install -Dm644 org.gramps_project.Gramps.desktop -t /app/share/applications/
+      - install -Dm644 gramps.desktop -t /app/share/applications/
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
@@ -242,4 +242,4 @@ modules:
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
       - type: file
-        path:  org.gramps_project.Gramps.desktop
+        path:  gramps.desktop
