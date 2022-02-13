@@ -223,12 +223,12 @@ modules:
 # Gramps
   - name: Gramps
     buildsystem: simple
-    config-opts:
-      - GRAMPS_RESOURCES=/app/share/gramps
+#    config-opts:
+#      - GRAMPS_RESOURCES=/app/share/gramps
 #      - PYTHONPATH=/app/lib/python3.9/site-packages/gramps
-#    build-options:
-#      env:
-#        GRAMPS_RESOURCES: /app/lib
+    build-options:
+      env:
+        GRAMPS_RESOURCES: /app/share/gramps
 #        PYTHONPATH: /app/lib/python3.9/site-packages/gramps
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
