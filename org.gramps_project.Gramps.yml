@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '41'
+runtime-version: '40'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
@@ -49,7 +49,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.9/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
@@ -128,7 +128,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib/python3.9/site-packages/gi/overrides
+      - -Dpython3_girdir=/app/lib/python3.8/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download-fallback.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
@@ -223,17 +223,9 @@ modules:
 # Gramps
   - name: Gramps
     buildsystem: simple
-#    config-opts:
-#      - --GRAMPS_RESOURCES=/app/share/gramps
-#      - --PYTHONPATH=/app/lib/python3.9/site-packages/gramps
-#    build-options:
-#      env:
-#        GRAMPS_RESOURCES: /app/share/gramps
-#        PYTHONPATH: /app/lib/python3.9/site-packages/gramps
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - python3 setup.py install --prefix=/app
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
-      - install -Dm644 gramps.desktop -t /app/share/applications/
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
@@ -241,5 +233,3 @@ modules:
         sha256:  4045a142a7c3cbe50a41e594bb160dce4112e37ef7dec68d65af42e9269c2df6
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
-      - type: file
-        path:  gramps.desktop
