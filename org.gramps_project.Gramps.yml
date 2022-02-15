@@ -85,12 +85,14 @@ modules:
 
 # following dependencies are for the old Berkeley database, Oracle took over in later versions
   - name: BSDDB3
-    buildsystem: simple
-    build-commands:
-      - cd build_unix
-      - ./dist/configure --prefix=/app --enable-compat185 --enable-shared --enable-cxx -enable-dbm --enable-stl
-      - make
-      - make docdir=/app/share install
+    subdir: dist
+    builddir: true
+    config-opts:
+      - --enable-compat185
+      - --enable-shared
+      - --enable-cxx
+      - --enable-dbm
+      - --enable-stl
     sources:
       - type: archive
         url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
@@ -98,6 +100,9 @@ modules:
       - type: patch
         path: atomic.patch
         # for aarch64 
+      - type: shell
+        commands:
+          - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
    #python3-bsddb deprecated and does not work after python3.9, must use berkeleydb
   - name: python3-bsddb
