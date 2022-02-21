@@ -1,11 +1,14 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '41'
+runtime-version: '40'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
+# no-debuginfo to prevent Github Actions workflow from getting stuck, it causes errors
+build-options:
+  no-debuginfo: true
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
@@ -34,7 +37,7 @@ modules:
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
@@ -46,7 +49,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.9/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
@@ -57,10 +60,8 @@ modules:
   # pyenchant most recent version as of 202107 was from 202106
   - name: pyenchantDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/63/c3/074c9c4d6c39b26e8d06316b698995ee11ccfe0332f684d133f33126bd69/pyenchant-3.2.1.tar.gz
@@ -103,16 +104,15 @@ modules:
         commands:
           - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
+   #python3-bsddb deprecated and does not work after python3.9, must use berkeleydb
   - name: python3-bsddb
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-options:
+      no-debuginfo: true
       env:
         BERKELEYDB_DIR: /app
     build-commands:
-      - python3 setup.py build
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
@@ -126,14 +126,14 @@ modules:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: archive
-        url:  https://www.exiv2.org/builds/exiv2-0.27.5-Source.tar.gz
+        url:  https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
         sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
 
     # gexiv2 most recent version as of 202104 was from 202102
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib/python3.9/site-packages/gi/overrides
+      - -Dpython3_girdir=/app/lib/python3.8/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download-fallback.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
@@ -143,10 +143,8 @@ modules:
     # python-fontconfig most recent version as of 202104 was 201909
   - name: python-fontconfig
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
@@ -162,6 +160,7 @@ modules:
 
     # Gramps does not see geocodeglib in platform, needed for place coordinate addon
     # appears to not have versioned releases anymore, last git edit as of 202110 was from 202109
+    # geocodeglib appears to have changed prerequisites and needs to be commented out for now to allow Gramps to compile
   - name: geocodeglibDependency
     buildsystem: meson
     sources:
@@ -172,10 +171,8 @@ modules:
     # pyicu most recent release as of 202104 was from 202104
   - name: PyICUDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/17/0f/9d6b7eb01650960239a5d4dc21cd6e7a96921807c043d287bae4b2f440e1/PyICU-2.7.2.tar.gz
@@ -201,10 +198,8 @@ modules:
     # decorator most recent version as of 202104 was from 202104
   - name: decoratorDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/a9/09/dd085a8afcf48fdaba851fe10956d5dbf1e9091206f7ca717223563f75c2/decorator-5.0.7.tar.gz
@@ -213,10 +208,8 @@ modules:
     # networkx most recent stable version as of 202104 was from 202008
   - name: networkxDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/ef/d0/f706a9e5814a42c544fa1b2876fc33e5d17e1f2c92a5361776632c4f41ab/networkx-2.5.tar.gz
@@ -225,10 +218,8 @@ modules:
     # pygraphviz most recent stable version as of 202104 was from 202102
   - name: pyGraphvizDependency
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/3a/d6/2c56f09ee83dbebb62c40487e4c972135661b9984fec9b30b77fb497090c/pygraphviz-1.7.zip
@@ -237,15 +228,13 @@ modules:
 # Gramps
   - name: Gramps
     buildsystem: simple
-    ensure-writable:
-      - /lib/python3.9/site-packages/easy-install.pth
     build-commands:
       - python3 setup.py install --prefix=/app
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.4.tar.gz
-        sha256:  6e64a5c1175a4897256ca9eb73a4b77c8e84ebff020b8668bdc527d6dcd14273
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.5.tar.gz
+        sha256:  4045a142a7c3cbe50a41e594bb160dce4112e37ef7dec68d65af42e9269c2df6
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml

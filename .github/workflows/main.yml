@@ -8,28 +8,29 @@ on:
 jobs:
   flatpak:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: InstallFlatpak
       run: |
+        sudo add-apt-repository ppa:flatpak/stable
         sudo apt update
-        sudo apt install flatpak flatpak-builder
-        
+        sudo apt install flatpak flatpak-builder python3-pip
+
     - name: SetupFlatpak
       run: |
         flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-        flatpak install flathub org.gnome.Platform//41 org.gnome.Sdk//41 -y
-        
+        flatpak install flathub org.gnome.Platform//40 org.gnome.Sdk//40 -y
+
     - name: BuildFlatpak
       run: |
         flatpak-builder --repo=repo --force-clean build-dir org.gramps_project.Gramps.yml
-        
+
     - name: BuildBundle
       run: |
         flatpak build-bundle repo gramps.flatpak org.gramps_project.Gramps
-        
+
     - name: UploadBundle
       uses: actions/upload-artifact@v2
       with:
