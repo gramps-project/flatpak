@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '40'
+runtime-version: '42'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
@@ -30,7 +30,9 @@ modules:
     buildsystem: autotools
     sources:
       - type: archive
-        url:  https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
+        url: https://ftp.gnu.org/gnu/rcs/rcs-5.10.0.tar.xz
+        mirror-urls:
+          - https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
         sha256:  3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5
 
 # PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
@@ -49,7 +51,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.8/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.9/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
@@ -133,7 +135,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib/python3.8/site-packages/gi/overrides
+      - -Dpython3_girdir=/app/lib/python3.9/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download-fallback.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
