@@ -21,6 +21,15 @@ finish-args:
   - --share=ipc
 #needs network access for maps
   - --share=network
+cleanup:
+  - '*.a'
+  - '*.la'
+  - /include
+  - /lib/pkgconfig
+  - /share/aclocal
+  - /lib/cmake
+  - /share/gir-1.0
+  - /share/man
 modules:
 # GNU Revision Control System, most recent version as of 202111 is from 202010
   - name: RCSDependency
