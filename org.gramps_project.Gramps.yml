@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '41'
+runtime-version: '42'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
@@ -24,20 +24,31 @@ finish-args:
   - --share=ipc
 #needs network access for maps
   - --share=network
+cleanup:
+  - '*.a'
+  - '*.la'
+  - /include
+  - /lib/pkgconfig
+  - /share/aclocal
+  - /lib/cmake
+  - /share/gir-1.0
+  - /share/man
 modules:
 # GNU Revision Control System, most recent version as of 202111 is from 202010
   - name: RCSDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url:  https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
+        url: https://ftp.gnu.org/gnu/rcs/rcs-5.10.0.tar.xz
+        mirror-urls:
+          - https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
         sha256:  3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5
 
 # PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
@@ -61,7 +72,7 @@ modules:
   - name: pyenchantDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/63/c3/074c9c4d6c39b26e8d06316b698995ee11ccfe0332f684d133f33126bd69/pyenchant-3.2.1.tar.gz
@@ -85,12 +96,14 @@ modules:
 
 # following dependencies are for the old Berkeley database, Oracle took over in later versions
   - name: BSDDB3
-    buildsystem: simple
-    build-commands:
-      - cd build_unix
-      - ./dist/configure --prefix=/app --enable-compat185 --enable-shared --enable-cxx -enable-dbm --enable-stl
-      - make
-      - make docdir=/app/share install
+    subdir: dist
+    builddir: true
+    config-opts:
+      - --enable-compat185
+      - --enable-shared
+      - --enable-cxx
+      - --enable-dbm
+      - --enable-stl
     sources:
       - type: archive
         url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
@@ -98,6 +111,9 @@ modules:
       - type: patch
         path: atomic.patch
         # for aarch64 
+      - type: shell
+        commands:
+          - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
    #python3-bsddb deprecated and does not work after python3.9, must use berkeleydb
   - name: python3-bsddb
@@ -107,7 +123,7 @@ modules:
       env:
         BERKELEYDB_DIR: /app
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
@@ -139,7 +155,7 @@ modules:
   - name: python-fontconfig
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
@@ -167,7 +183,7 @@ modules:
   - name: PyICUDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/17/0f/9d6b7eb01650960239a5d4dc21cd6e7a96921807c043d287bae4b2f440e1/PyICU-2.7.2.tar.gz
@@ -194,7 +210,7 @@ modules:
   - name: decoratorDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/a9/09/dd085a8afcf48fdaba851fe10956d5dbf1e9091206f7ca717223563f75c2/decorator-5.0.7.tar.gz
@@ -204,7 +220,7 @@ modules:
   - name: networkxDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/ef/d0/f706a9e5814a42c544fa1b2876fc33e5d17e1f2c92a5361776632c4f41ab/networkx-2.5.tar.gz
@@ -214,7 +230,7 @@ modules:
   - name: pyGraphvizDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
     sources:
       - type: archive
         url:  https://files.pythonhosted.org/packages/3a/d6/2c56f09ee83dbebb62c40487e4c972135661b9984fec9b30b77fb497090c/pygraphviz-1.7.zip
@@ -227,7 +243,7 @@ modules:
       env:
         GRAMPS_RESOURCES: /app/lib/python3.9/site-packages
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=$FLATPAK_DEST .
+      - python3 setup.py install --prefix=/app
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
