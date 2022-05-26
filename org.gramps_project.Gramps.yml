@@ -6,9 +6,6 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
-# no-debuginfo to prevent Github Actions workflow from getting stuck, it causes errors
-# build-options:
-#  strip: true
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
