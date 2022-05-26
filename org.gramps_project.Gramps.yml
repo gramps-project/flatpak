@@ -196,13 +196,14 @@ modules:
         url: https://gitlab.com/graphviz/graphviz/-/archive/2.47.1/graphviz-2.47.1.tar.gz
         sha256:  b7f4d6819e4dc17c15e7e07bd1ea5e081ef6569b63f8427117dac32f0e3837b4
 
-    # ghostscript most recent version as of 202104 was from 202103
+    # ghostscript most recent version as of 202205 was from 202204
+    # ghostscript 9.54 occasionally gave a pipe error that is avoided by no-debuginfo: true in build-options
   - name: GhostscriptDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.gz
-        sha256:  0646bb97f6f4d10a763f4919c54fa28b4fbdd3dff8e7de3410431c81762cade0
+        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9561/ghostscript-9.56.1.tar.gz
+        sha256:  1598b9a38659cce8448d42a73054b2f9cbfcc40a9b97eeec5f22d4d6cd1de8e6
 
 # for network chart addon
     # decorator most recent version as of 202104 was from 202104
