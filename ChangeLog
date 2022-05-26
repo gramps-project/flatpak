@@ -1,7 +1,8 @@
 Gramps flatpak 5.1.5-4
   - remove old code and comments
   - update geocode-glib sha256sum because the dependency changed upstream
-  - change "no-debuginfo: true" to "strip: true" to make flatpak smaller
+  - update ghostscript dependency to 9.56.1 in hopes compile error was resolved upstream
+  - comment out build-options in hopes they are no longer necessary with the Ghostscript update
   
 Gramps flatpak 5.1.5-3
   - gasinvein added cleanup to make flatpak smaller
