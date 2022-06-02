@@ -6,9 +6,6 @@ sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
-# no-debuginfo to prevent Github Actions workflow from getting stuck, it causes errors
-build-options:
-  no-debuginfo: true
 finish-args:
 # Gramps installs media files from backups to home, so it needs home access for now
 #  - --filesystem=xdg-documents
@@ -170,14 +167,13 @@ modules:
         sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
 
     # Gramps does not see geocodeglib in platform, needed for place coordinate addon
-    # appears to not have versioned releases anymore, last git edit as of 202110 was from 202109
-    # geocodeglib appears to have changed prerequisites and needs to be commented out for now to allow Gramps to compile
+    # appears to not have versioned releases anymore, last git edit as of 202205 was from 202205
   - name: geocodeglibDependency
     buildsystem: meson
     sources:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/master/geocode-glib-master.tar.gz
-        sha256:  d2cfc8b096f112ad2446278e19473d316a048ed457f6349a05e68cc128a57f2d
+        sha256:  0d4c1bd9997dc0982e4e0a884067e4c4a1675d7cb51dd8205aba74dd02ed0342
 
     # pyicu most recent release as of 202104 was from 202104
   - name: PyICUDependency
@@ -197,13 +193,14 @@ modules:
         url: https://gitlab.com/graphviz/graphviz/-/archive/2.47.1/graphviz-2.47.1.tar.gz
         sha256:  b7f4d6819e4dc17c15e7e07bd1ea5e081ef6569b63f8427117dac32f0e3837b4
 
-    # ghostscript most recent version as of 202104 was from 202103
+    # ghostscript most recent version as of 202205 was from 202204
+    # ghostscript 9.54 occasionally gave a pipe error that is avoided by no-debuginfo: true in build-options
   - name: GhostscriptDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9540/ghostscript-9.54.0.tar.gz
-        sha256:  0646bb97f6f4d10a763f4919c54fa28b4fbdd3dff8e7de3410431c81762cade0
+        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs9561/ghostscript-9.56.1.tar.gz
+        sha256:  1598b9a38659cce8448d42a73054b2f9cbfcc40a9b97eeec5f22d4d6cd1de8e6
 
 # for network chart addon
     # decorator most recent version as of 202104 was from 202104
