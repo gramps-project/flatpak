@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '42'
+runtime-version: '43'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
@@ -167,13 +167,13 @@ modules:
         sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
 
     # Gramps does not see geocodeglib in platform, needed for place coordinate addon
-    # appears to not have versioned releases anymore, last git edit as of 202205 was from 202205
+    # appears to not have versioned releases anymore, last git edit as of 202303 was from 202208
   - name: geocodeglibDependency
     buildsystem: meson
     sources:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/master/geocode-glib-master.tar.gz
-        sha256:  0d4c1bd9997dc0982e4e0a884067e4c4a1675d7cb51dd8205aba74dd02ed0342
+        sha256:  9ec6747d31fee70e5b7ede079f63402b67c21c329ade1d8a8ef9c76de5136901
 
     # pyicu most recent release as of 202104 was from 202104
   - name: PyICUDependency
