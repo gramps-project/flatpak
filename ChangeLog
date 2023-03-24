@@ -1,3 +1,7 @@
+Gramps flatpak 5.1.5-5
+  - update runtime to Gnome 43
+  - update hash for geocode-glib due to upstream change
+  
 Gramps flatpak 5.1.5-4
   - remove old code and comments
   - update geocode-glib sha256sum because the dependency changed upstream
