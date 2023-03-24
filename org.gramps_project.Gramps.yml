@@ -31,14 +31,6 @@ cleanup:
   - /share/gir-1.0
   - /share/man
 modules:
-# GNU Revision Control System, most recent version as of 202303 is 202202
-#  - name: RCSDependency
-#    buildsystem: autotools
-#    sources:
-#      - type: archive
-#        url: https://mirror2.sandyriver.net/pub/software/gnu/rcs/rcs-5.10.1.tar.lz
-#        sha256:  43ddfe10724a8b85e2468f6403b6000737186f01e60e0bd62fde69d842234cc5
-
 # PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
   - name: PILLOWDependency
     buildsystem: simple
@@ -110,7 +102,7 @@ modules:
         commands:
           - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
-   #python3-bsddb deprecated and does not work after python3.9, must use berkeleydb
+   #python3-bsddb 
   - name: python3-bsddb
     buildsystem: simple
     build-options:
