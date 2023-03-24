@@ -31,15 +31,13 @@ cleanup:
   - /share/gir-1.0
   - /share/man
 modules:
-# GNU Revision Control System, most recent version as of 202111 is from 202010
+# GNU Revision Control System, most recent version as of 202303 is 202202
   - name: RCSDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://ftp.gnu.org/gnu/rcs/rcs-5.10.0.tar.xz
-        mirror-urls:
-          - https://gnu.freemirror.org/gnu/rcs/rcs-5.10.0.tar.xz
-        sha256:  3a0d9f958c7ad303e475e8634654974edbe6deb3a454491f3857dc1889bac5c5
+        url: https://mirror2.sandyriver.net/pub/software/gnu/rcs/rcs-5.10.1.tar.lz
+        sha256:  43ddfe10724a8b85e2468f6403b6000737186f01e60e0bd62fde69d842234cc5
 
 # PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
   - name: PILLOWDependency
