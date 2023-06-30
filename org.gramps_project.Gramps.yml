@@ -152,7 +152,7 @@ modules:
    # Libsoup 2 is not in Gnome 44 runtime as of 2023-06, so libsoup needs a manual install until
    # osmgpsmap gets updated to use a newer version of libsoup. Latest libsoup 2 is 2.74 from Oct 2022.
   - name: libsoupDependency
-    buildsystem: autotools
+    buildsystem: meson
     sources:
       - type: archive
         url: https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
