@@ -2,6 +2,7 @@ Gramps flatpak 5.1.6-1
   - update gramps source to 5.1.6 and update sha256sum
   - update Gnome runtime to 44
   - add libsoup 2.74 because as of Jun 2023 Gnome 44 does not support libsoup 2.x
+  - change python 3.9 override references to python 3.10 used by Gnome runtime 44
 
 Gramps flatpak 5.1.5-5
   - update runtime to Gnome 43
