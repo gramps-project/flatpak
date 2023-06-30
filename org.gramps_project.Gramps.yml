@@ -148,6 +148,16 @@ modules:
         url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
         sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
 
+   # osmgpsmap dependency 1.2 as of 2023-06 requires libsoup 2.4. 
+   # Libsoup 2.4 is not in Gnome 44 runtime as of 2023-06, so libsoup needs a manual install until
+   # osmgpsmap gets updated to use a newer version of libsoup. libsoup 2.4 is from April 2008.
+  - name: libsoupDependency
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libsoup/2.4/LATEST-IS-2.4.1
+        sha256: bbc6d24a3a788783e196a6ac4f744328e4c0a7b8ba5cd563360bb32580e79006
+
     # osmgpsmap most recent version as of 202104 was from 202102
   - name: osmgpsmapDependency
     buildsystem: autotools
