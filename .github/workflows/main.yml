@@ -2,7 +2,10 @@ name: CreateFlatpak
 
 on:
   push:
-    branches: [main]
+    branches:
+      - 'main'
+    paths:
+      - 'org.gramps_project.Gramps.yml'
   workflow_dispatch:
 
 jobs:
