@@ -155,7 +155,7 @@ modules:
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/libsoup/2.4/LATEST-IS-2.4.1
+        url: https://download.gnome.org/sources/libsoup/2.4/libsoup-2.4.1.tar.gz
         sha256: bbc6d24a3a788783e196a6ac4f744328e4c0a7b8ba5cd563360bb32580e79006
 
     # osmgpsmap most recent version as of 202104 was from 202102
