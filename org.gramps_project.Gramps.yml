@@ -149,14 +149,14 @@ modules:
         sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
 
    # osmgpsmap dependency 1.2 as of 2023-06 requires libsoup 2.4. 
-   # Libsoup 2.4 is not in Gnome 44 runtime as of 2023-06, so libsoup needs a manual install until
-   # osmgpsmap gets updated to use a newer version of libsoup. libsoup 2.4 is from April 2008.
+   # Libsoup 2 is not in Gnome 44 runtime as of 2023-06, so libsoup needs a manual install until
+   # osmgpsmap gets updated to use a newer version of libsoup. Latest libsoup 2 is 2.74 from Oct 2022.
   - name: libsoupDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/libsoup/2.4/libsoup-2.4.1.tar.gz
-        sha256: bbc6d24a3a788783e196a6ac4f744328e4c0a7b8ba5cd563360bb32580e79006
+        url: https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
+        sha256: e4b77c41cfc4c8c5a035fcdc320c7bc6cfb75ef7c5a034153df1413fa1d92f13
 
     # osmgpsmap most recent version as of 202104 was from 202102
   - name: osmgpsmapDependency
