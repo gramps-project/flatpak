@@ -24,7 +24,7 @@ jobs:
     - name: SetupFlatpak
       run: |
         flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-        flatpak install flathub org.gnome.Platform//43 org.gnome.Sdk//43 -y
+        flatpak install flathub org.gnome.Platform//44 org.gnome.Sdk//44 -y
 
     - name: BuildFlatpak
       run: |
