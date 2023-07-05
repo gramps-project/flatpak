@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '43'
+runtime-version: '44'
 sdk: org.gnome.Sdk
 command: gramps
 rename-icon: gramps
@@ -47,7 +47,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.9/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.10/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
@@ -131,7 +131,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib/python3.9/site-packages/gi/overrides
+      - -Dpython3_girdir=/app/lib/python3.10/site-packages/gi/overrides
     sources:
       - type: archive
         url:  https://download-fallback.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
@@ -147,6 +147,16 @@ modules:
       - type: archive
         url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
         sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
+
+   # osmgpsmap dependency 1.2 as of 2023-06 requires libsoup 2.4. 
+   # Libsoup 2 is not in Gnome 44 runtime as of 2023-06, so libsoup needs a manual install until
+   # osmgpsmap gets updated to use a newer version of libsoup. Latest libsoup 2 is 2.74 from Oct 2022.
+  - name: libsoupDependency
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
+        sha256: e4b77c41cfc4c8c5a035fcdc320c7bc6cfb75ef7c5a034153df1413fa1d92f13
 
     # osmgpsmap most recent version as of 202104 was from 202102
   - name: osmgpsmapDependency
@@ -232,7 +242,7 @@ modules:
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.5.tar.gz
-        sha256:  4045a142a7c3cbe50a41e594bb160dce4112e37ef7dec68d65af42e9269c2df6
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.6.tar.gz
+        sha256:  bff0b5694e77e0f7075fb76481c4523d37646cc042c8dd9897ff2e0cd401fa3b
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
