@@ -7,7 +7,6 @@ command: gramps
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
 finish-args:
-# Gramps installs media files from backups to home, so it needs home access for now
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
   - --filesystem=xdg-pictures
@@ -80,40 +79,41 @@ modules:
         url: https://sourceforge.net/projects/gtkspell/files/3.0.10/gtkspell3-3.0.10.tar.xz
         sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
 
+# --comment out script for old BSDDB3
 # following dependencies are for the old Berkeley database, Oracle took over in later versions
-  - name: BSDDB3
-    subdir: dist
-    builddir: true
-    config-opts:
-      - --enable-compat185
-      - --enable-shared
-      - --enable-cxx
-      - --enable-dbm
-      - --enable-stl
-    sources:
-      - type: archive
-        url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
-        sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
-      - type: patch
-        path: atomic.patch
-        # for aarch64 
-      - type: shell
-        commands:
-          - cp -p /usr/share/automake-*/config.{sub,guess} dist
+#  - name: BSDDB3
+#    subdir: dist
+#    builddir: true
+#    config-opts:
+#      - --enable-compat185
+#      - --enable-shared
+#      - --enable-cxx
+#      - --enable-dbm
+#      - --enable-stl
+#    sources:
+#      - type: archive
+#        url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
+#        sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
+#      - type: patch
+#        path: atomic.patch
+#        # for aarch64 
+#      - type: shell
+#        commands:
+#          - cp -p /usr/share/automake-*/config.{sub,guess} dist
 
-   #python3-bsddb 
-  - name: python3-bsddb
-    buildsystem: simple
-    build-options:
-      no-debuginfo: true
-      env:
-        BERKELEYDB_DIR: /app
-    build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
-        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
+#   #python3-bsddb 
+#  - name: python3-bsddb
+#    buildsystem: simple
+#    build-options:
+#      no-debuginfo: true
+#      env:
+#        BERKELEYDB_DIR: /app
+#    build-commands:
+#      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+#    sources:
+#      - type: archive
+#        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
+#        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
 
 # following dependencies are for images
     # exiv2 most recent version was from 202110 as of 202201
@@ -241,7 +241,7 @@ modules:
       - mv ${FLATPAK_DEST}/share/mime/packages/gramps.xml ${FLATPAK_DEST}/share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.6.tar.gz
-        sha256:  bff0b5694e77e0f7075fb76481c4523d37646cc042c8dd9897ff2e0cd401fa3b
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0-beta1.tar.gz
+        sha256:  0ee22369819e9e8f864a3cd2e509e0f4f9fc6612ed1f35449d4963a323387516
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
