@@ -7,10 +7,11 @@ command: gramps
 # rename-icon: gramps
 rename-desktop-file: gramps.desktop
 finish-args:
-  - --filesystem=xdg-documents
-  - --filesystem=xdg-download
-  - --filesystem=xdg-pictures
-  - --filesystem=~/.gramps:create
+  - --filesystem=home
+#  - --filesystem=xdg-documents
+#  - --filesystem=xdg-download
+#  - --filesystem=xdg-pictures
+#  - --filesystem=~/.gramps:create
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
