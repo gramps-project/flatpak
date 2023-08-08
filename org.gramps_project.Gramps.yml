@@ -238,7 +238,6 @@ modules:
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
-      - mv /app/share/mime/packages/org.gramps_project.Gramps.xml /app/share/mime/packages/${FLATPAK_ID}.xml
       - mv /app/share/applications/org.gramps_project.Gramps.desktop /app/share/applications/gramps.desktop
     sources:
       - type: archive
