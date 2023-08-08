@@ -237,7 +237,7 @@ modules:
   - name: Gramps
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - python3 setup.py install --prefix=/app
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
       - mv /app/share/applications/org.gramps_project.Gramps.desktop /app/share/applications/gramps.desktop
     sources:
