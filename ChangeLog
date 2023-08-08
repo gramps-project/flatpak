@@ -2,6 +2,7 @@ Gramps flatpak 5.2.0-0
   - update Gramps source to 5.2.0 and update sha256
   - remove flatpak's home directory access in favor of xdg access for Docs, Downloads, and Pictures
   - remove old BSDDB3
+  - update GraphViz to 8.1.0 and sha256
 
 Gramps flatpak 5.1.6-1
   - update gramps source to 5.1.6 and update sha256sum
