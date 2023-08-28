@@ -242,7 +242,7 @@ modules:
 #      - mv /app/share/applications/org.gramps_project.Gramps.desktop /app/share/applications/gramps.desktop
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0-beta1.tar.gz
-        sha256:  0ee22369819e9e8f864a3cd2e509e0f4f9fc6612ed1f35449d4963a323387516
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0-beta2.tar.gz
+        sha256:  5e3337f4570debff9b30fdb67b5358f57eda2b8de1e88e0e717c5362751f2608
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
