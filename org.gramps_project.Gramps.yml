@@ -84,6 +84,7 @@ modules:
     config-opts:
       - -DCMAKE_INSTALL_PREFIX=/app
       - -DALLOW_IN_SOURCE_BUILD=ON
+      - -DCMAKE_INSTALL_LIBDIR=lib
 #      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
 #      - -DExiv2_INCLUDE_DIRS=/app/include
 #      - -DExiv2_LIBRARIES=/app/lib
