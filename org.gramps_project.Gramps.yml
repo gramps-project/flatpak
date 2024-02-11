@@ -152,6 +152,8 @@ modules:
         sha256:  1382869b22d91cc99274f9b525fa7d9199b44d9007ff0036a09747839a01e9dc
 
     # graphviz most recent version as of 2024Feb from 2024Feb
+    # pygraphviz 1.12 requires pep517, which is not compatible with flatpak. Must use older version if necessary. 
+    # however, pygraphviz no longer appears necessary from testing flatpaks, so pygraphviz will be left out starting with Gramps 5.2.
   - name: GraphVizDependency
     buildsystem: autotools
     sources:
@@ -187,9 +189,6 @@ modules:
       - type: archive
         url:  https://files.pythonhosted.org/packages/ef/d0/f706a9e5814a42c544fa1b2876fc33e5d17e1f2c92a5361776632c4f41ab/networkx-2.5.tar.gz
         sha256:  7978955423fbc9639c10498878be59caf99b44dc304c2286162fd24b458c1602
-
-    # pygraphviz most recent stable version as of 2024Feb was from 2024Jan
-    # pygraphviz 1.12 requires pep517, which is not compatible with flatpak. Must use older version if necessary.
   
 # Gramps
   - name: Gramps
