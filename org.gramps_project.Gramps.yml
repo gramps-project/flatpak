@@ -189,15 +189,8 @@ modules:
         sha256:  7978955423fbc9639c10498878be59caf99b44dc304c2286162fd24b458c1602
 
     # pygraphviz most recent stable version as of 2024Feb was from 2024Jan
-  - name: pyGraphvizDependency
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-deps --prefix=/app .
-    sources:
-      - type: archive
-        url:  https://github.com/pygraphviz/pygraphviz/archive/refs/tags/pygraphviz-1.12.tar.gz
-        sha256:  d200d22fd81ef50a03ce9cf60a740f97bc32721c975d92a81342358e34428d2f
-
+    # pygraphviz 1.12 requires pep517, which is not compatible with flatpak. Must use older version if necessary.
+  
 # Gramps
   - name: Gramps
     buildsystem: simple
