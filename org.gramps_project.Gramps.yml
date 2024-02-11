@@ -80,12 +80,12 @@ modules:
 # following dependencies are for images
     # exiv2 most recent version was 2023Nov as of 2024Feb
   - name: exiv2
-    buildsystem: cmake
+    buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_INSTALL_PREFIX=/app
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
-     # - -DExiv2_INCLUDE_DIRS=/app/include
-     # - -DExiv2_LIBRARIES=/app/lib
+      - -DExiv2_INCLUDE_DIRS=/app/include
+      - -DExiv2_LIBRARIES=/app/lib
     sources:
       - type: archive
         url:  https://github.com/Exiv2/exiv2/releases/download/v0.28.1/exiv2-0.28.1-Linux64.tar.gz
