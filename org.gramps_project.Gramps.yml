@@ -107,10 +107,11 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-     # for gexiv2 .12 - -Dpython3_girdir=/app/lib/python3.12/site-packages/gi/overrides
-     - -Dintrospection=false
-     - -Dpython3=false
-     - -Dvapi=false
+     - -Dpython3_girdir=/app/lib/python3.11/site-packages/gi/overrides
+     # gramps apparently needs introspection to use gexiv2
+     # - -Dintrospection=false
+     # - -Dpython3=false
+     # - -Dvapi=false
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.2.tar.xz
