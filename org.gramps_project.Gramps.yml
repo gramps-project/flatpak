@@ -107,12 +107,14 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-     - -PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR=/app/share/gir-1.0
-     - -PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR=/app/lib/girepository-1.0
      # gramps apparently needs introspection to use gexiv2
      # - -Dintrospection=false
      # - -Dpython3=false
      # - -Dvapi=false
+    build-options:
+      env:
+        - -PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR=/app/share/gir-1.0
+        - -PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR=/app/lib/girepository-1.0
     sources:
       - type: archive
         url:  https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.2.tar.xz
