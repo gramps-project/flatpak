@@ -78,15 +78,15 @@ modules:
         sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
 
 # following dependencies are for images
-    # exiv2 most recent version was from 202110 as of 202201
+    # exiv2 most recent version was 2023Nov as of 2024Feb
   - name: exiv2
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: archive
-        url:  https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
-        sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
+        url:  https://github.com/Exiv2/exiv2/releases/download/v0.28.1/exiv2-0.28.1-Linux64.tar.gz
+        sha256: 44e665790b56a9fff1b297a7ff3b5655ae87487c4950ffcccc3665196b206c66
 
     # gexiv2 use 0.12.2 release from 2021 for now due to change in config in 0.14
   - name: gexiv2Dependency
