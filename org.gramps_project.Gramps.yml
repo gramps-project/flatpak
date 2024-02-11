@@ -81,8 +81,8 @@ modules:
     # exiv2 most recent version was 2023Nov as of 2024Feb
   - name: exiv2
     buildsystem: cmake
-#    config-opts:
-#      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
     sources:
       - type: archive
         url:  https://github.com/Exiv2/exiv2/releases/download/v0.28.1/exiv2-0.28.1-Linux64.tar.gz
