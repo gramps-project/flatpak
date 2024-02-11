@@ -82,20 +82,21 @@ modules:
   - name: exiv2
     buildsystem: cmake-ninja
     config-opts:
-      - -DCMAKE_INSTALL_PREFIX=/app
-      - -DALLOW_IN_SOURCE_BUILD=ON
-      - -DCMAKE_INSTALL_LIBDIR=lib
+#      - -DCMAKE_INSTALL_PREFIX=/app
+#     - -DALLOW_IN_SOURCE_BUILD=ON
+#      - -DCMAKE_INSTALL_LIBDIR=lib
 #      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
 #      - -DExiv2_INCLUDE_DIRS=/app/include
 #      - -DExiv2_LIBRARIES=/app/lib
-      - -DCMAKE_CXX_FLAGS=-Wno-deprecated
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DBUILD_SHARED_LIBS=ON
-      - -DEXIV2_BUILD_SAMPLES=ON
-      - -DEXIV2_ENABLE_NLS=OFF
-      - -DEXIV2_ENABLE_WEBREADY=ON
+#      - -DCMAKE_CXX_FLAGS=-Wno-deprecated
+#      - -DCMAKE_BUILD_TYPE=Release
+#      - -DBUILD_SHARED_LIBS=ON
+#      - -DEXIV2_BUILD_SAMPLES=ON
+#      - -DEXIV2_ENABLE_NLS=OFF
+#      - -DEXIV2_ENABLE_WEBREADY=ON
       - -DEXIV2_ENABLE_BMFF=ON
-      - -DEXIV2_BUILD_UNIT_TESTS=ON
+#      - -DEXIV2_BUILD_UNIT_TESTS=ON
+      - -DEXIV2_ENABLE_INIH=OFF
     sources:
       - type: archive
         url:  https://github.com/Exiv2/exiv2/releases/download/v0.28.1/exiv2-0.28.1-Linux64.tar.gz
