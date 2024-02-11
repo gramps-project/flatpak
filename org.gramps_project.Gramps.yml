@@ -1,13 +1,10 @@
 app-id: org.gramps_project.Gramps
-# flatpak-builder will not take com.gramps-project.Gramps
+# flatpak-builder will not take hyphen in com.gramps-project.Gramps
 runtime: org.gnome.Platform
 runtime-version: '45'
 sdk: org.gnome.Sdk
 command: gramps
-# rename-icon: gramps
-# rename-desktop-file: gramps.desktop
 finish-args:
-#  - --filesystem=home
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
   - --filesystem=xdg-pictures
@@ -79,42 +76,6 @@ modules:
       - type: archive
         url: https://sourceforge.net/projects/gtkspell/files/3.0.10/gtkspell3-3.0.10.tar.xz
         sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
-
-# --comment out script for old BSDDB3
-# following dependencies are for the old Berkeley database, Oracle took over in later versions
-#  - name: BSDDB3
-#    subdir: dist
-#    builddir: true
-#    config-opts:
-#      - --enable-compat185
-#      - --enable-shared
-#      - --enable-cxx
-#      - --enable-dbm
-#      - --enable-stl
-#    sources:
-#      - type: archive
-#        url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
-#        sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
-#      - type: patch
-#        path: atomic.patch
-#        # for aarch64 
-#      - type: shell
-#        commands:
-#          - cp -p /usr/share/automake-*/config.{sub,guess} dist
-
-#   #python3-bsddb 
-#  - name: python3-bsddb
-#    buildsystem: simple
-#    build-options:
-#      no-debuginfo: true
-#      env:
-#        BERKELEYDB_DIR: /app
-#    build-commands:
-#      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
-#    sources:
-#      - type: archive
-#        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
-#        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
 
 # following dependencies are for images
     # exiv2 most recent version was from 202110 as of 202201
@@ -237,10 +198,8 @@ modules:
   - name: Gramps
     buildsystem: simple
     build-commands:
-#      - python3 setup.py install --prefix=/app
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
-#      - mv /app/share/applications/org.gramps_project.Gramps.desktop /app/share/applications/gramps.desktop
     sources:
       - type: archive
         url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0-rc1.tar.gz
