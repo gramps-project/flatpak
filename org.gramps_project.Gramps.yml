@@ -1,18 +1,14 @@
 app-id: org.gramps_project.Gramps
-# flatpak-builder will not take com.gramps-project.Gramps
+# flatpak-builder will not take hyphen in com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '44'
+runtime-version: '45'
 sdk: org.gnome.Sdk
 command: gramps
-# rename-icon: gramps
-# rename-desktop-file: gramps.desktop
 finish-args:
-# Gramps installs media files from backups to home, so it needs home access for now
-#  - --filesystem=xdg-documents
-#  - --filesystem=xdg-download
-#  - --filesystem=xdg-pictures
+  - --filesystem=xdg-documents
+  - --filesystem=xdg-download
+  - --filesystem=xdg-pictures
 #  - --filesystem=~/.gramps:create
-  - --filesystem=home
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
@@ -47,7 +43,7 @@ modules:
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.10/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.12/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
@@ -81,41 +77,6 @@ modules:
         url: https://sourceforge.net/projects/gtkspell/files/3.0.10/gtkspell3-3.0.10.tar.xz
         sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
 
-# following dependencies are for the old Berkeley database, Oracle took over in later versions
-  - name: BSDDB3
-    subdir: dist
-    builddir: true
-    config-opts:
-      - --enable-compat185
-      - --enable-shared
-      - --enable-cxx
-      - --enable-dbm
-      - --enable-stl
-    sources:
-      - type: archive
-        url: https://download.oracle.com/berkeley-db/db-5.3.28.tar.gz
-        sha256: e0a992d740709892e81f9d93f06daf305cf73fb81b545afe72478043172c3628
-      - type: patch
-        path: atomic.patch
-        # for aarch64 
-      - type: shell
-        commands:
-          - cp -p /usr/share/automake-*/config.{sub,guess} dist
-
-   #python3-bsddb 
-  - name: python3-bsddb
-    buildsystem: simple
-    build-options:
-      no-debuginfo: true
-      env:
-        BERKELEYDB_DIR: /app
-    build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
-    sources:
-      - type: archive
-        url: https://files.pythonhosted.org/packages/source/b/bsddb3/bsddb3-6.2.7.tar.gz
-        sha256: b0f7fa63eb240cd5815809c9d1d7df9f7cc8d6fa9619d0edbe9c794afc02dc9f
-
 # following dependencies are for images
     # exiv2 most recent version was from 202110 as of 202201
   - name: exiv2
@@ -127,14 +88,14 @@ modules:
         url:  https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
         sha256: 35a58618ab236a901ca4928b0ad8b31007ebdc0386d904409d825024e45ea6e2
 
-    # gexiv2 most recent version as of 202104 was from 202102
+    # gexiv2 use 0.12.2 release from 2021 for now due to change in config in 0.14
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-      - -Dpython3_girdir=/app/lib/python3.10/site-packages/gi/overrides
+      - -Dpython3_girdir=/app/lib/python3.12/site-packages/gi/overrides
     sources:
       - type: archive
-        url:  https://download-fallback.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
+        url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
         sha256:  2322b552aca330eef79724a699c51a302345d5e074738578b398b7f2ff97944c
 
 # following dependencies are for geography and charts
@@ -185,13 +146,13 @@ modules:
         url:  https://files.pythonhosted.org/packages/17/0f/9d6b7eb01650960239a5d4dc21cd6e7a96921807c043d287bae4b2f440e1/PyICU-2.7.2.tar.gz
         sha256:  1382869b22d91cc99274f9b525fa7d9199b44d9007ff0036a09747839a01e9dc
 
-    # graphviz most recent version as of 202104 from 202104
+    # graphviz most recent version as of 202308 from 202307
   - name: GraphVizDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://gitlab.com/graphviz/graphviz/-/archive/2.47.1/graphviz-2.47.1.tar.gz
-        sha256:  b7f4d6819e4dc17c15e7e07bd1ea5e081ef6569b63f8427117dac32f0e3837b4
+        url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/8.1.0/graphviz-8.1.0.tar.gz
+        sha256:  4abb401a5437d1ec07aee6b3d9213a4b5e060a428393ebfdedfa7baedf39eb32
 
     # ghostscript most recent version as of 202205 was from 202204
     # ghostscript 9.54 occasionally gave a pipe error that is avoided by no-debuginfo: true in build-options
@@ -237,12 +198,11 @@ modules:
   - name: Gramps
     buildsystem: simple
     build-commands:
-      - python3 setup.py install --prefix=/app
+      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
-#      - mv share/mime/packages/gramps.xml share/mime/packages/${FLATPAK_ID}.xml
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.1.6.tar.gz
-        sha256:  bff0b5694e77e0f7075fb76481c4523d37646cc042c8dd9897ff2e0cd401fa3b
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0-rc1.tar.gz
+        sha256:  d0c929eab76e45493387ef6a6310ac96a6bcc658a1f517ed46791c12204af22b
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
