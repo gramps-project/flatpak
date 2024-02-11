@@ -83,6 +83,8 @@ modules:
     buildsystem: cmake
     config-opts:
       - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DExiv2_INCLUDE_DIRS=/app/include
+      - -DExiv2_LIBRARIES=/app/lib
     sources:
       - type: archive
         url:  https://github.com/Exiv2/exiv2/releases/download/v0.28.1/exiv2-0.28.1-Linux64.tar.gz
