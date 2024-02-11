@@ -107,7 +107,7 @@ modules:
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
-     - -Dpython3_girdir=/app/lib/python3.11/site-packages/gi/overrides
+     - -Dgirdir=/app/lib/python3.11/site-packages/gi/overrides
      # gramps apparently needs introspection to use gexiv2
      # - -Dintrospection=false
      # - -Dpython3=false
