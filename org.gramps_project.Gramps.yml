@@ -103,15 +103,15 @@ modules:
         url:  https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.1.tar.gz
         sha256: 3078651f995cb6313b1041f07f4dd1bf0e9e4d394d6e2adc6e92ad0b621291fa
 
-    # gexiv2 use 0.12.2 release from 2021 for now due to change in config in 0.14
+    # gexiv2 most recent from 2023July as of 2024Feb
   - name: gexiv2Dependency
     buildsystem: meson
     config-opts:
       - -Dpython3_girdir=/app/lib/python3.12/site-packages/gi/overrides
     sources:
       - type: archive
-        url:  https://download.gnome.org/sources/gexiv2/0.12/gexiv2-0.12.2.tar.xz
-        sha256:  2322b552aca330eef79724a699c51a302345d5e074738578b398b7f2ff97944c
+        url:  https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.2.tar.xz
+        sha256:  2a0c9cf48fbe8b3435008866ffd40b8eddb0667d2212b42396fdf688e93ce0be
 
 # following dependencies are for geography and charts
     # python-fontconfig most recent version as of 202104 was 201909
