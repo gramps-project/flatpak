@@ -8,6 +8,8 @@ Gramps flatpak 5.2.0-0
   - update exiv2 to 0.28.1
   - update gexiv2 to 0.14.2
   - update ghostscript to 10.02.1
+  - update graphviz to 10.0.1
+  - update pygraphviz to 1.12
 
 Gramps flatpak 5.1.6-1
   - update gramps source to 5.1.6 and update sha256sum
