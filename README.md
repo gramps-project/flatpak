@@ -5,7 +5,9 @@ The flatpak is available on flathub at https://flathub.org/apps/details/org.gram
 The Gramps flatpak contains dependencies and works with flathub runtimes to work independently regardless of the linux distribution.  There are also dependencies for some third party add-ons like Graphview and Network Chart.
 
 To request another prerequisite be added to support another Gramps add-on, you can request it at the gramps project flatpak github or at the flathub Gramps flatpak github.
+
 https://github.com/gramps-project/flatpak
+
 https://github.com/flathub/org.gramps_project.Gramps
 
 ***Please Note***
