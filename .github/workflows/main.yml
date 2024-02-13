@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@main
     - name: InstallFlatpak
       run: |
         sudo add-apt-repository ppa:flatpak/stable
@@ -24,7 +24,7 @@ jobs:
     - name: SetupFlatpak
       run: |
         flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-        flatpak install flathub org.gnome.Platform//44 org.gnome.Sdk//44 -y
+        flatpak install flathub org.gnome.Platform//45 org.gnome.Sdk//45 -y
 
     - name: BuildFlatpak
       run: |
@@ -35,7 +35,7 @@ jobs:
         flatpak build-bundle repo gramps.flatpak org.gramps_project.Gramps
 
     - name: UploadBundle
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@main
       with:
         name: gramps.flatpak
         path: gramps.flatpak
