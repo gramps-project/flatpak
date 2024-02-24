@@ -198,7 +198,7 @@ modules:
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0-rc1.tar.gz
-        sha256:  d0c929eab76e45493387ef6a6310ac96a6bcc658a1f517ed46791c12204af22b
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0.tar.gz
+        sha256:  e368bbb9f5647eeb6dde8f5941b502d26f6969fba1e2fc5367d1cd4d9a725e91
       - type: file
         path:  org.gramps_project.Gramps.metainfo.xml
