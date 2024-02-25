@@ -195,6 +195,7 @@ modules:
     buildsystem: simple
     build-commands:
       - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - rm /app/share/metainfo/${FLATPAK_ID}.appdata.xml
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
     sources:
       - type: archive
