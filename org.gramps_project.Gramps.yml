@@ -4,6 +4,8 @@ runtime: org.gnome.Platform
 runtime-version: '44'
 sdk: org.gnome.Sdk
 command: gramps
+# to force an archive flatpak to use system locale instead of English. Not needed for flathub packages.
+separate-locales: false
 rename-icon: gramps
 rename-desktop-file: gramps.desktop
 finish-args:
