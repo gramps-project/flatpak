@@ -4,6 +4,8 @@ runtime: org.gnome.Platform
 runtime-version: '45'
 sdk: org.gnome.Sdk
 command: gramps
+# to force an archive flatpak to use system locale instead of English. Not needed for flathub packages.
+separate-locales: false
 finish-args:
   - --filesystem=xdg-documents
   - --filesystem=xdg-download
