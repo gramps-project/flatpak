@@ -30,6 +30,12 @@ finish-args:
   - --share=ipc
 #needs network access for maps
   - --share=network
+
+build-options:
+  env:
+    PIP_PREFIX: /app
+    PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
 cleanup:
   - '*.a'
   - '*.la'
@@ -40,15 +46,15 @@ cleanup:
   - /share/gir-1.0
   - /share/man
 modules:
-# PILLOW for cropping images, latex support, and addons; most recent version as of 202107 is from 202107
+# PILLOW for cropping images, latex support, and addons; most recent version as of 2024.03 is from 2024.01
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/8f/7d/1e9c2d8989c209edfd10f878da1af956059a1caab498e5bc34fa11b83f71/Pillow-8.3.1.tar.gz
-        sha256:  2cac53839bfc5cece8fdbe7f084d5e3ee61e1303cccc86511d351adcb9e2c792
+        url:  https://files.pythonhosted.org/packages/source/p/pillow/pillow-10.2.0.tar.gz
+        sha256:  e87f0b2c78157e12d7686b27d63c070fd65d994e8ddae6f328e0dcf4a0cd007e
 
     # Goocanvas 3 does not work with GraphView as of 202104
   - name: GoocanvasDependency
@@ -64,44 +70,27 @@ modules:
         sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
 
 # following dependencies are for spell check
-  # pyenchant most recent version as of 202107 was from 202106
-  - name: pyenchantDependency
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+    # Gspell most recent version as of 2024.03 was from 2023.07
+  - name: gspell
+    cleanup:
+      - /bin
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/63/c3/074c9c4d6c39b26e8d06316b698995ee11ccfe0332f684d133f33126bd69/pyenchant-3.2.1.tar.gz
-        sha256:  5e206a1d6596904a922496f6c9f7d0b964b243905f401f5f2f40ea4d1f74e2cf
-
-    # intltool most recent version as of 202104 was from 2015
-  - name: intltool
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz
-        sha256: 67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd
-
-    # GTK-Spell most recent version as of 202104 was from 2018
-  - name: gtk-spell
-    buildsystem: autotools
-    sources:
-      - type: archive
-        url: https://sourceforge.net/projects/gtkspell/files/3.0.10/gtkspell3-3.0.10.tar.xz
-        sha256: b040f63836b347eb344f5542443dc254621805072f7141d49c067ecb5a375732
+        url: https://download.gnome.org/sources/gspell/1.12/gspell-1.12.2.tar.xz
+        sha256: b4e993bd827e4ceb6a770b1b5e8950fce3be9c8b2b0cbeb22fdf992808dd2139
 
 # following dependencies are for images and metadata
-    # exiv2 most recent version was 2023Nov as of 2024Feb
+    # exiv2 most recent version as of 2024.03 was from 2024.02
   - name: exiv2
     buildsystem: cmake-ninja
     config-opts:
       - -DEXIV2_ENABLE_BMFF=ON
       - -DEXIV2_ENABLE_INIH=OFF
-    builddir: true  
+    builddir: true
     sources:
       - type: archive
-        url:  https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.1.tar.gz
-        sha256: 3078651f995cb6313b1041f07f4dd1bf0e9e4d394d6e2adc6e92ad0b621291fa
+        url:  https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.2.tar.gz
+        sha256: 543bead934135f20f438e0b6d8858c55c5fcb7ff80f5d1d55489965f1aad58b9
 
     # gexiv2 most recent from 2023July as of 2024Feb
     # gramps apparently needs introspection to use gexiv2
@@ -121,7 +110,7 @@ modules:
   - name: python-fontconfig
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - pip3 install --no-build-isolation .
     sources:
       - type: archive
         url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
@@ -146,23 +135,23 @@ modules:
         sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
 
     # Gramps does not see geocodeglib in platform, needed for place coordinate addon
-    # appears to not have versioned releases anymore, last git edit as of 202303 was from 202208
+    # appears to not have versioned releases anymore, last git edit as of 2024.03 was from 2024.03
   - name: geocodeglibDependency
     buildsystem: meson
     sources:
       - type: archive
-        url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/master/geocode-glib-master.tar.gz
-        sha256:  9ec6747d31fee70e5b7ede079f63402b67c21c329ade1d8a8ef9c76de5136901
+        url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/8f1b5a9149156a03f62dfea14780e8fee030506d/geocode-glib-8f1b5a9149156a03f62dfea14780e8fee030506d.tar.gz
+        sha256:  f4ea933937633d6e33607945c9ca45070628e8545be0ea502b59f959932e8b26
 
-    # pyicu most recent release as of 202104 was from 202104
+    # pyicu most recent release as of 2024.03 was from 2023.11
   - name: PyICUDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/17/0f/9d6b7eb01650960239a5d4dc21cd6e7a96921807c043d287bae4b2f440e1/PyICU-2.7.2.tar.gz
-        sha256:  1382869b22d91cc99274f9b525fa7d9199b44d9007ff0036a09747839a01e9dc
+        url:  https://files.pythonhosted.org/packages/source/P/PyICU/PyICU-2.12.tar.gz
+        sha256:  bd7ab5efa93ad692e6daa29cd249364e521218329221726a113ca3cb281c8611
 
     # graphviz most recent version as of 2024Feb from 2024Feb
     # pygraphviz 1.12 requires pep517, which is not compatible with flatpak. Must use older version if necessary. 
@@ -174,40 +163,40 @@ modules:
         url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/10.0.1/graphviz-10.0.1.tar.xz
         sha256:  7bd8064a94bc178862aa0fbb0ed2236f49c188b2fd656487247c58db3019fe21
 
-    # ghostscript most recent version as of 2024Feb was from 202311
+    # ghostscript most recent version as of 2024.03 was from 2024.03
   - name: GhostscriptDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10021/ghostscript-10.02.1.tar.gz
-        sha256:  e429e4f5b01615a4f0f93a4128e8a1a4d932dff983b1774174c79c0630717ad9
+        url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10030/ghostscript-10.03.0.tar.gz
+        sha256:  6f2bc61023469fcf7c7c2d7f1bdd75b75f2b41836aa1d5e641396246d4abbb59
 
 # for network chart addon
-    # decorator most recent version as of 202104 was from 202104
+    # decorator most recent version as of 2024.03 was from 2022.01
   - name: decoratorDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/a9/09/dd085a8afcf48fdaba851fe10956d5dbf1e9091206f7ca717223563f75c2/decorator-5.0.7.tar.gz
-        sha256:  6f201a6c4dac3d187352661f508b9364ec8091217442c9478f1f83c003a0f060
+        url:  https://files.pythonhosted.org/packages/source/d/decorator/decorator-5.1.1.tar.gz
+        sha256:  637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330
 
-    # networkx most recent stable version as of 202104 was from 202008
+    # networkx most recent stable version as of 2024.03 was from 2023.10
   - name: networkxDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/ef/d0/f706a9e5814a42c544fa1b2876fc33e5d17e1f2c92a5361776632c4f41ab/networkx-2.5.tar.gz
-        sha256:  7978955423fbc9639c10498878be59caf99b44dc304c2286162fd24b458c1602
+        url:  https://files.pythonhosted.org/packages/source/n/networkx/networkx-3.2.1.tar.gz
+        sha256:  9f1bb5cf3409bf324e0a722c20bdb4c20ee39bf1c30ce8ae499c8502b0b5e0c6
   
 # Gramps
   - name: Gramps
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps --no-use-pep517 --prefix=/app .
+      - pip3 install --no-build-isolation .
       - rm /app/share/metainfo/${FLATPAK_ID}.appdata.xml
       - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
     sources:
