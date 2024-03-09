@@ -22,8 +22,6 @@ finish-args:
 #  - --filesystem=xdg-data:create
 #  - --filesystem=xdg-config:create
 #  - --filesystem=xdg-cache:create
-# needs to own upstream name
-  - --own-name=org.gramps-project.Gramps
 # for gui
   - --socket=wayland
   - --socket=fallback-x11
