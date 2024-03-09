@@ -1,5 +1,6 @@
 Gramps flatpak 5.2.0-1
-  - add file access to xdg-data, xdg-config, xdg-cache, and ~/.gramps
+  - add file access to various data directories used by prior versions and system installs of Gramps
+    this includes ~/.gramps ~/.local/share ~/.config ~/.cache with create option if the respective gramps subdirectory does not yet exist
 
 Gramps flatpak 5.2.0-0
   - update Gramps source to 5.2.0 and update sha256
