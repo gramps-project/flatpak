@@ -1,5 +1,5 @@
 Gramps flatpak 5.2.0-1
-  - add file access to xdg-data, xdg-config, xdg-cache, and ~/.gramps
+  - restore home directory access due to user data loss, since flathub blocks adequate access to xdg-data, xdg-config, xdg-cache, and ~/.gramps
 
 Gramps flatpak 5.2.0-0
   - update Gramps source to 5.2.0 and update sha256
