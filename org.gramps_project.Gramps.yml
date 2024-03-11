@@ -7,14 +7,21 @@ command: gramps
 # to force an archive flatpak to use system locale instead of English. Not needed for flathub packages.
 separate-locales: false
 finish-args:
-  - --filesystem=xdg-documents
-  - --filesystem=xdg-download
-  - --filesystem=xdg-pictures
-# for data directories and backwards compatibility  
-  - --filesystem=~/.gramps:create
-  - --filesystem=xdg-data
-  - --filesystem=xdg-config
-  - --filesystem=xdg-cache
+  - --filesystem=home
+# for now, flathub rules blocking the data directories prevent users from choosing to go between a flatpak
+# installation and a system installation. This can cause user data loss, even using persist instead of filesystem
+# can cause data loss for users moving from the flatpak to a system install. When flathub changes thier rules, 
+# home access can be removed and the below filesystems permissiong can be used
+#  - --filesystem=xdg-documents
+#  - --filesystem=xdg-download
+#  - --filesystem=xdg-pictures
+# for data directories and compatibility with system installs, flathub currently blocks these directories
+ # for databases started with 5.1 and earlier
+#  - --filesystem=~/.gramps:create
+ # for databases started with 5.2 system installations
+#  - --filesystem=xdg-data
+#  - --filesystem=xdg-config
+#  - --filesystem=xdg-cache
 # needs to own upstream name
   - --own-name=org.gramps-project.Gramps
 # for gui
