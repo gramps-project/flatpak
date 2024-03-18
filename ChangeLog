@@ -1,3 +1,14 @@
+Gramps flatpak 5.2.0-2
+  -remove own-name since it was fixed upstream
+  -add pip build-options
+  -change pip commands to no-build-isolation
+  -replace old gtk-spell and dependencies with gspell
+  -update exiv2 to 0.28.2
+  -update geocode-glib
+  -update ghostscript to 10.03.0
+  -update decorator to 5.1.1
+  -update networkx to 3.2.1
+
 Gramps flatpak 5.2.0-1
   - restore home directory access due to user data loss, since flathub blocks adequate access to xdg-data, xdg-config, xdg-cache, and ~/.gramps
 
