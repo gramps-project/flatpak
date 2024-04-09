@@ -1,3 +1,7 @@
+Gramps flatpak 5.2.2-0
+  - update Gramps source to 5.2.2
+  - update Gnome runtime to 46
+
 Gramps flatpak 5.2.1-0
   - update Gramps source to 5.2.1
   - remove separate metainfo since fixed upstream
