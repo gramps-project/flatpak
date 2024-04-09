@@ -195,11 +195,7 @@ modules:
     buildsystem: simple
     build-commands:
       - pip3 install --no-build-isolation .
-      - rm /app/share/metainfo/${FLATPAK_ID}.appdata.xml
-      - install -Dm644 org.gramps_project.Gramps.metainfo.xml -t /app/share/metainfo/
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.0.tar.gz
-        sha256:  e368bbb9f5647eeb6dde8f5941b502d26f6969fba1e2fc5367d1cd4d9a725e91
-      - type: file
-        path:  org.gramps_project.Gramps.metainfo.xml
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.1.tar.gz
+        sha256:  7ed027a93b1c5d371c2c7abd678dd1cc6795edf3bdabc87cdda1d97252acc220

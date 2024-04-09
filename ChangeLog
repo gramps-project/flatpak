@@ -1,3 +1,7 @@
+Gramps flatpak 5.2.1-0
+  - update Gramps source to 5.2.1
+  - remove separate metainfo since fixed upstream
+
 Gramps flatpak 5.2.0-2
   -remove own-name since it was fixed upstream
   -add pip build-options
