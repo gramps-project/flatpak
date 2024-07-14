@@ -1,3 +1,6 @@
+Gramps flatpak 5.2.3-0
+  - update Gramps source to 5.2.3 and update sha256sum
+
 Gramps flatpak 5.2.2-0
   - update Gramps source to 5.2.2
   - update Gnome runtime to 46
