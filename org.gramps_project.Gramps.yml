@@ -3,6 +3,9 @@ app-id: org.gramps_project.Gramps
 runtime: org.gnome.Platform
 runtime-version: '47'
 sdk: org.gnome.Sdk
+# librsvg as of 2024.12.23 requires rust cargo to compile, which is in the extension below
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
 command: gramps
 # to force an archive flatpak to use system locale instead of English. Not needed for flathub packages.
 separate-locales: false
