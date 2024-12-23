@@ -164,6 +164,15 @@ modules:
         url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/10.0.1/graphviz-10.0.1.tar.xz
         sha256:  7bd8064a94bc178862aa0fbb0ed2236f49c188b2fd656487247c58db3019fe21
 
+  - name: PyGraphVizDependency
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-build-isolation .
+    sources:
+      - archive
+        url: https://github.com/pygraphviz/pygraphviz/archive/refs/tags/pygraphviz-1.14.tar.gz
+        sha256:  d9a43f34b920367fa89a2598083b47db42a28078aff7d4e2cb41475137532560
+
     # ghostscript most recent version as of 2024.03 was from 2024.03
   - name: GhostscriptDependency
     buildsystem: autotools
