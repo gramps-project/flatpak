@@ -169,6 +169,7 @@ modules:
     build-commands:
       - pip3 install --no-build-isolation .
     sources:
+      - type: archive
         url: https://github.com/pygraphviz/pygraphviz/archive/refs/tags/pygraphviz-1.14.tar.gz
         sha256:  d9a43f34b920367fa89a2598083b47db42a28078aff7d4e2cb41475137532560
 
