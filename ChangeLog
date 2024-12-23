@@ -2,6 +2,7 @@ Gramps flatpak 5.2.3-1
   - update Gnome runtime to 47
   - update to goocanvas 3.0.0 because a patch exists for it to work
   - used goocanvas patch because python 3.12 in Gnome 47 does not work with goocanvas
+  - add pygraphviz 1.14
 
 Gramps flatpak 5.2.3-0
   - update Gramps source to 5.2.3 and update sha256sum
