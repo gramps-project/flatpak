@@ -3,9 +3,6 @@ app-id: org.gramps_project.Gramps
 runtime: org.gnome.Platform
 runtime-version: '47'
 sdk: org.gnome.Sdk
-# librsvg as of 2024.12.23 requires rust cargo to compile, which is in the extension below
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.rust-stable/x86_64/24.08
 command: gramps
 # to force an archive flatpak to use system locale instead of English. Not needed for flathub packages.
 separate-locales: false
@@ -47,15 +44,6 @@ cleanup:
   - /share/gir-1.0
   - /share/man
 modules:
-# librsvg is supposed to be in Gnome, but network chart does not generate svg files correctly
-# most recent update 2.59.2 was 2024.10.29 as of 2024.12.23
-  - name: librsvgDependency
-    buildsystem: meson
-    sources:
-      - type: archive
-        url:  https://download.gnome.org/sources/librsvg/2.59/librsvg-2.59.2.tar.xz
-        sha256:  ecd293fb0cc338c170171bbc7bcfbea6725d041c95f31385dc935409933e4597
-        
 # PILLOW for cropping images, latex support, and addons; most recent version as of 2024.03 is from 2024.01
   - name: PILLOWDependency
     buildsystem: simple
