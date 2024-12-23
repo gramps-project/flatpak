@@ -67,6 +67,8 @@ modules:
       - type: archive
         url:  https://download.gnome.org/sources/goocanvas/3.0/goocanvas-3.0.0.tar.xz
         sha256:  670a7557fe185c2703a14a07506156eceb7cea3b4bf75076a573f34ac52b401a
+      - type: patch
+        path: goocanvas-3.0.0-gcc14.patch
 
 # following dependencies are for spell check
     # Gspell most recent version as of 2024.03 was from 2023.07
