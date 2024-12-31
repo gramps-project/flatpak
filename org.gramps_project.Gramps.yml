@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take hyphen in com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '46'
+runtime-version: '47'
 sdk: org.gnome.Sdk
 command: gramps
 # to force an archive flatpak to use system locale instead of English. Not needed for flathub packages.
@@ -54,18 +54,20 @@ modules:
         url:  https://files.pythonhosted.org/packages/source/p/pillow/pillow-10.2.0.tar.gz
         sha256:  e87f0b2c78157e12d7686b27d63c070fd65d994e8ddae6f328e0dcf4a0cd007e
 
-    # Goocanvas 3 does not work with GraphView as of 202104
+    # Goocanvas is abandoned and the most recent update is from 2021.01.16.
   - name: GoocanvasDependency
     buildsystem: autotools
     config-opts:
       - --prefix=/app
     make-install-args:
-      - pyoverridesdir=/app/lib/python3.11/site-packages/gi/overrides
+      - pyoverridesdir=/app/lib/python3.12/site-packages/gi/overrides
       - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
-        url:  https://download.gnome.org/sources/goocanvas/2.0/goocanvas-2.0.4.tar.xz
-        sha256:  c728e2b7d4425ae81b54e1e07a3d3c8a4bd6377a63cffa43006045bceaa92e90
+        url:  https://download.gnome.org/sources/goocanvas/3.0/goocanvas-3.0.0.tar.xz
+        sha256:  670a7557fe185c2703a14a07506156eceb7cea3b4bf75076a573f34ac52b401a
+      - type: patch
+        path: goocanvas-3.0.0-gcc14.patch
 
 # following dependencies are for spell check
     # Gspell most recent version as of 2024.03 was from 2023.07
@@ -152,14 +154,22 @@ modules:
         sha256:  bd7ab5efa93ad692e6daa29cd249364e521218329221726a113ca3cb281c8611
 
     # graphviz most recent version as of 2024Feb from 2024Feb
-    # pygraphviz 1.12 requires pep517, which is not compatible with flatpak. Must use older version if necessary. 
-    # however, pygraphviz no longer appears necessary from testing flatpaks, so pygraphviz will be left out starting with Gramps 5.2.
   - name: GraphVizDependency
     buildsystem: autotools
     sources:
       - type: archive
         url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/10.0.1/graphviz-10.0.1.tar.xz
         sha256:  7bd8064a94bc178862aa0fbb0ed2236f49c188b2fd656487247c58db3019fe21
+
+    # pygraphviz 1.14 most recent version 2024.09.29 as of 2024.12.23
+  - name: PyGraphVizDependency
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-build-isolation .
+    sources:
+      - type: archive
+        url: https://github.com/pygraphviz/pygraphviz/archive/refs/tags/pygraphviz-1.14.tar.gz
+        sha256:  d9a43f34b920367fa89a2598083b47db42a28078aff7d4e2cb41475137532560
 
     # ghostscript most recent version as of 2024.03 was from 2024.03
   - name: GhostscriptDependency
