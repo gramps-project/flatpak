@@ -207,14 +207,14 @@ modules:
       - pip3 install --no-build-isolation .
     sources:
       - type: file
-        url: https://github.com/ijl/orjson/archive/refs/tags/3.10.15.tar.gz
-        sha256: d2fadc32a07cbb95254604f7d886ef4a5ff0e958455fcdd82e640ebd25abea4a
+        url: https://github.com/ijl/orjson/archive/refs/tags/3.9.8.tar.gz
+        sha256: f1daf9e9ff8d8e4509f7673a55b15d2e5b4607e7fb37a3c33426fabfe70b72cf
 
 # Gramps
   - name: Gramps
     buildsystem: simple
     build-commands:
-      - pip3 install --no-build-isolation .
+      - pip3 install --no-deps .
     sources:
       - type: archive
         url:  https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.0-beta1.tar.gz
