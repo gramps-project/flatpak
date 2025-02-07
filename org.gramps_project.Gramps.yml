@@ -204,11 +204,11 @@ modules:
   - name: orjson
     buildsystem: simple
     build-commands:
-      - pip3 install --no-build-isolation .
+      - pip3 install --no-build-isolation --use-pep517 .
     sources:
       - type: file
-        url: https://github.com/ijl/orjson/archive/refs/tags/3.9.8.tar.gz
-        sha256: f1daf9e9ff8d8e4509f7673a55b15d2e5b4607e7fb37a3c33426fabfe70b72cf
+        url: https://files.pythonhosted.org/packages/22/86/65dc69bd88b6dd254535310e97bc518aa50a39ef9c5a2a5d518e7a223710/orjson-3.10.15-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: e117eb299a35f2634e25ed120c37c641398826c2f5a3d3cc39f5993b96171b9e
 
 # Gramps
   - name: Gramps
