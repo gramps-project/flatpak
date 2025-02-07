@@ -204,7 +204,7 @@ modules:
   - name: orjson
     buildsystem: simple
     build-commands:
-      - pip3 install --no-build-isolation wheel orjson
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --no-build-isolation wheel orjson
     sources:
       - type: file
         url: https://files.pythonhosted.org/packages/22/86/65dc69bd88b6dd254535310e97bc518aa50a39ef9c5a2a5d518e7a223710/orjson-3.10.15-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
