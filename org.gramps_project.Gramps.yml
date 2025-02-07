@@ -200,15 +200,15 @@ modules:
         url:  https://files.pythonhosted.org/packages/source/n/networkx/networkx-3.2.1.tar.gz
         sha256:  9f1bb5cf3409bf324e0a722c20bdb4c20ee39bf1c30ce8ae499c8502b0b5e0c6
 
-# Gramps 6 requires orjson to run in flatpak, versions 3.9 and 3.10 of orjson did not compile in 202502 so using 3.8.3
+# Gramps 6 requires orjson to run in flatpak
   - name: orjson
     buildsystem: simple
     build-commands:
-      - pip3 install --prefix /app --no-deps orjson-*.whl
+      - pip3 install --no-build-isolation .
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/02/1c/8234d74a415bcc22f43dcbc636b6ba31df295c449e3bdc294f7616c43c49/orjson-3.8.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256: 65ea3336c2bda31bc938785b84283118dec52eb90a2946b140054873946f60a4
+        url: https://github.com/ijl/orjson/archive/refs/tags/3.10.15.tar.gz
+        sha256: d2fadc32a07cbb95254604f7d886ef4a5ff0e958455fcdd82e640ebd25abea4a
 
 # Gramps
   - name: Gramps
