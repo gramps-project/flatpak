@@ -200,7 +200,7 @@ modules:
         url:  https://files.pythonhosted.org/packages/source/n/networkx/networkx-3.2.1.tar.gz
         sha256:  9f1bb5cf3409bf324e0a722c20bdb4c20ee39bf1c30ce8ae499c8502b0b5e0c6
 
-# Gramps 6 requires orjson to run in flatpak
+# Gramps 6 requires orjson to run in flatpak, version 3.10.15 failed as of 2025-02, but 3.9.15 from 2024-02 succeeded in compiling
   - name: orjsonDependency
     buildsystem: simple
     build-commands:
