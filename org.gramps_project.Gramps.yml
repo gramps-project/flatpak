@@ -214,7 +214,7 @@ modules:
   - name: Gramps
     buildsystem: simple
     build-commands:
-      - pip3 install --no-deps .
+      - pip3 install --no-build-isolation .
     sources:
       - type: archive
         url:  https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.0-beta1.tar.gz
