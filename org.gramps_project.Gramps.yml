@@ -199,7 +199,17 @@ modules:
       - type: archive
         url:  https://files.pythonhosted.org/packages/source/n/networkx/networkx-3.2.1.tar.gz
         sha256:  9f1bb5cf3409bf324e0a722c20bdb4c20ee39bf1c30ce8ae499c8502b0b5e0c6
-  
+
+# Gramps 6 requires orjson to run in flatpak, version 3.10.15 failed as of 2025-02, but 3.9.15 from 2024-02 succeeded in compiling
+  - name: orjsonDependency
+    buildsystem: simple
+    build-commands:
+      - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}" --no-build-isolation wheel orjson
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/6a/3a/225b65664b7de15cf706eda6ab65cb23e8f59c274d4457c4eeaa2d510980/orjson-3.9.15-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 10c57bc7b946cf2efa67ac55766e41764b66d40cbd9489041e637c1304400494
+
 # Gramps
   - name: Gramps
     buildsystem: simple
@@ -207,5 +217,5 @@ modules:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v5.2.4.tar.gz
-        sha256:  7d5f22db92c43cb7798b50837e95ee5da56154596d9dea3b96d2c5cd2e5f0cdd
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.0-beta1.tar.gz
+        sha256:  9b932398bd06e54084bf27303588a6737b6a727724ad16f9cad6dd09d38175a1
