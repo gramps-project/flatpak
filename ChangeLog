@@ -1,3 +1,10 @@
+Gramps flatpak 6.0.0-rc1
+  - update Gramps source to 6.0.0-rc1
+
+Gramps flatpak 6.0.0-beta1
+  - update Gramps source to 6.0.0-beta1
+  - add orjson version 3.9.15 since 3.10.15 does not compile
+
 Gramps flatpak 5.2.4-0
   - update Gramps source and sha256 to 5.2.4
 
