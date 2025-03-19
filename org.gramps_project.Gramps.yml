@@ -217,5 +217,5 @@ modules:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.0-rc1.tar.gz
-        sha256:  a566c15b306c919e3f9cc9ecf31dc0bd618c82cd5864cd43b5cb993b7a002ba9
+        url:  https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.0-rc2.tar.gz
+        sha256:  118a86f30d91732a641f8c43904d3302756e4ab7e8af07e7a1bff2b88f09a493
