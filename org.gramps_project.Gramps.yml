@@ -92,7 +92,7 @@ modules:
         url:  https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.5.tar.gz
         sha256: e1671f744e379a87ba0c984617406fdf8c0ad0c594e5122f525b2fb7c28d394d
 
-    # gexiv2 most recent from 2023July as of 2024Feb
+    # gexiv2 most recent version as of 2025.03 was from 2024.06
     # gramps apparently needs introspection to use gexiv2
   - name: gexiv2Dependency
     buildsystem: meson
@@ -102,8 +102,8 @@ modules:
         - -PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR=/app/lib/girepository-1.0
     sources:
       - type: archive
-        url:  https://download.gnome.org/sources/gexiv2/0.14/gexiv2-0.14.2.tar.xz
-        sha256:  2a0c9cf48fbe8b3435008866ffd40b8eddb0667d2212b42396fdf688e93ce0be
+        url:  https://gitlab.gnome.org/GNOME/gexiv2/-/archive/gexiv2-0.14.3/gexiv2-gexiv2-0.14.3.tar.gz
+        sha256:  5a7ea82effa9c812ac1518a1b4a22a15035d721b0b30cd4b8303228fd5b38e3c
 
 # following dependencies are for geography and charts
     # python-fontconfig most recent version as of 202104 was 201909
