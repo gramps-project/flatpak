@@ -80,7 +80,7 @@ modules:
         sha256: b4e993bd827e4ceb6a770b1b5e8950fce3be9c8b2b0cbeb22fdf992808dd2139
 
 # following dependencies are for images and metadata
-    # exiv2 most recent version as of 2024.03 was from 2024.02
+    # exiv2 most recent version as of 2025.03 was from 2025.02
   - name: exiv2
     buildsystem: cmake-ninja
     config-opts:
@@ -89,8 +89,8 @@ modules:
     builddir: true
     sources:
       - type: archive
-        url:  https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.2.tar.gz
-        sha256: 543bead934135f20f438e0b6d8858c55c5fcb7ff80f5d1d55489965f1aad58b9
+        url:  https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.5.tar.gz
+        sha256: e1671f744e379a87ba0c984617406fdf8c0ad0c594e5122f525b2fb7c28d394d
 
     # gexiv2 most recent from 2023July as of 2024Feb
     # gramps apparently needs introspection to use gexiv2
