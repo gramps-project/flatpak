@@ -167,25 +167,15 @@ modules:
         sha256: 8fb8eb3c34646ac7f0287c7673ebbf3928b23e558f421edf4495b9881430a1d4
 
 # for network chart addon
-    # decorator most recent version as of 2024.03 was from 2022.01
-  - name: decoratorDependency
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-build-isolation .
-    sources:
-      - type: archive
-        url:  https://files.pythonhosted.org/packages/source/d/decorator/decorator-5.1.1.tar.gz
-        sha256:  637996211036b6385ef91435e4fae22989472f9d571faba8927ba8253acbc330
-
-    # networkx most recent stable version as of 2024.03 was from 2023.10
+    # networkx most recent stable version as of 2025.03 was from 2024.10
   - name: networkxDependency
     buildsystem: simple
     build-commands:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/source/n/networkx/networkx-3.2.1.tar.gz
-        sha256:  9f1bb5cf3409bf324e0a722c20bdb4c20ee39bf1c30ce8ae499c8502b0b5e0c6
+        url: https://files.pythonhosted.org/packages/fd/1d/06475e1cd5264c0b870ea2cc6fdb3e37177c1e565c43f56ff17a10e3937f/networkx-3.4.2.tar.gz
+        sha256: 307c3669428c5362aab27c8a1260aa8f47c4e91d3891f48be0141738d8d053e1
 
 # Gramps 6 requires orjson to run in flatpak, version 3.10.15 failed as of 2025-02, but 3.9.15 from 2024-02 succeeded in compiling
   - name: orjsonDependency
