@@ -105,17 +105,6 @@ modules:
         url:  https://gitlab.gnome.org/GNOME/gexiv2/-/archive/gexiv2-0.14.3/gexiv2-gexiv2-0.14.3.tar.gz
         sha256:  5a7ea82effa9c812ac1518a1b4a22a15035d721b0b30cd4b8303228fd5b38e3c
 
-# following dependencies are for geography and charts
-    # python-fontconfig most recent version as of 202104 was 201909
-  - name: python-fontconfig
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-build-isolation .
-    sources:
-      - type: archive
-        url: https://github.com/ldo/python_fontconfig/archive/v0.7.tar.gz
-        sha256: 44d3f1597afae0720c02d2504105c5c2b074f2e6bc017f3c73fe33559e571e3b
-
    # osmgpsmap dependency 1.2 as of 2023-06 requires libsoup 2.4. 
    # Libsoup 2 is not in Gnome 44 runtime as of 2023-06, so libsoup needs a manual install until
    # osmgpsmap gets updated to use a newer version of libsoup. Latest libsoup 2 is 2.74 from Oct 2022.
