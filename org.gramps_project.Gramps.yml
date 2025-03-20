@@ -140,13 +140,13 @@ modules:
         url: https://files.pythonhosted.org/packages/52/21/4e9b0a3ace3027fc63107fa2b5d6e66e321e104da071d787856962fbad52/PyICU-2.14.tar.gz
         sha256: acc7eb92bd5c554ed577249c6978450a4feda0aa6f01470152b3a7b382a02132
 
-    # graphviz most recent version as of 2024Feb from 2024Feb
+    # graphviz most recent version as of 2025.03 from 2024.12
   - name: GraphVizDependency
     buildsystem: autotools
     sources:
       - type: archive
-        url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/10.0.1/graphviz-10.0.1.tar.xz
-        sha256:  7bd8064a94bc178862aa0fbb0ed2236f49c188b2fd656487247c58db3019fe21
+        url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/12.2.1/graphviz-12.2.1.tar.gz
+        sha256: 242bc18942eebda6db4039f108f387ec97856fc91ba47f21e89341c34b554df8
 
     # pygraphviz 1.14 most recent version 2024.09.29 as of 2024.12.23
   - name: PyGraphVizDependency
