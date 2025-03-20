@@ -70,14 +70,14 @@ modules:
         path: goocanvas-3.0.0-gcc14.patch
 
 # following dependencies are for spell check
-    # Gspell most recent version as of 2024.03 was from 2023.07
+    # Gspell most recent version as of 2025.03 was from 2024.09
   - name: gspell
     cleanup:
       - /bin
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/gspell/1.12/gspell-1.12.2.tar.xz
-        sha256: b4e993bd827e4ceb6a770b1b5e8950fce3be9c8b2b0cbeb22fdf992808dd2139
+        url: https://gitlab.gnome.org/GNOME/gspell/-/archive/1.14.0/gspell-1.14.0.tar.gz
+        sha256: 6ff11258569227c4ef0eaed0524e0c9f84308d34f89fbc49e5d961cdd832ac6a
 
 # following dependencies are for images and metadata
     # exiv2 most recent version as of 2025.03 was from 2025.02
