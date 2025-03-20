@@ -44,15 +44,15 @@ cleanup:
   - /share/gir-1.0
   - /share/man
 modules:
-# PILLOW for cropping images, latex support, and addons; most recent version as of 2024.03 is from 2024.01
+# PILLOW for cropping images, latex support, and addons; most recent version as of 2025.03 is from 2025.01
   - name: PILLOWDependency
     buildsystem: simple
     build-commands:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/source/p/pillow/pillow-10.2.0.tar.gz
-        sha256:  e87f0b2c78157e12d7686b27d63c070fd65d994e8ddae6f328e0dcf4a0cd007e
+        url:  https://files.pythonhosted.org/packages/f3/af/c097e544e7bd278333db77933e535098c259609c4eb3b85381109602fb5b/pillow-11.1.0.tar.gz
+        sha256:  368da70808b36d73b4b390a8ffac11069f8a5c85f29eff1f1b01bcf3ef5b2a20
 
     # Goocanvas is abandoned and the most recent update is from 2021.01.16.
   - name: GoocanvasDependency
