@@ -3,6 +3,7 @@ Gramps flatpak 6.0.0-rc2
   - update Gnome Platform to 48
   - update exiv2 to 0.28.5
   - update gexiv2 to 0.14.3
+  - update PILLOW to 11.1.0
 
 Gramps flatpak 6.0.0-rc1
   - update Gramps source to 6.0.0-rc1
