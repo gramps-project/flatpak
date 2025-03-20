@@ -116,7 +116,7 @@ modules:
         url: https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
         sha256: e4b77c41cfc4c8c5a035fcdc320c7bc6cfb75ef7c5a034153df1413fa1d92f13
 
-    # osmgpsmap most recent version as of 202104 was from 202102
+    # osmgpsmap is abandoned as of 2025.03 so most recent version was from 202102
   - name: osmgpsmapDependency
     buildsystem: autotools
     sources:
