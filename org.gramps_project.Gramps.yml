@@ -130,15 +130,15 @@ modules:
         url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/8f1b5a9149156a03f62dfea14780e8fee030506d/geocode-glib-8f1b5a9149156a03f62dfea14780e8fee030506d.tar.gz
         sha256:  f4ea933937633d6e33607945c9ca45070628e8545be0ea502b59f959932e8b26
 
-    # pyicu most recent release as of 2024.03 was from 2023.11
+    # pyicu most recent release as of 2025.03 was from 2024.10
   - name: PyICUDependency
     buildsystem: simple
     build-commands:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/source/P/PyICU/PyICU-2.12.tar.gz
-        sha256:  bd7ab5efa93ad692e6daa29cd249364e521218329221726a113ca3cb281c8611
+        url: https://files.pythonhosted.org/packages/52/21/4e9b0a3ace3027fc63107fa2b5d6e66e321e104da071d787856962fbad52/PyICU-2.14.tar.gz
+        sha256: acc7eb92bd5c554ed577249c6978450a4feda0aa6f01470152b3a7b382a02132
 
     # graphviz most recent version as of 2024Feb from 2024Feb
   - name: GraphVizDependency
