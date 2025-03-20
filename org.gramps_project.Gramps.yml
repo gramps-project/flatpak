@@ -148,7 +148,7 @@ modules:
         url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/12.2.1/graphviz-12.2.1.tar.gz
         sha256: 242bc18942eebda6db4039f108f387ec97856fc91ba47f21e89341c34b554df8
 
-    # pygraphviz 1.14 most recent version 2024.09.29 as of 2024.12.23
+    # pygraphviz 1.14 most recent version 2024.09.29 as of 2025.03
   - name: PyGraphVizDependency
     buildsystem: simple
     build-commands:
