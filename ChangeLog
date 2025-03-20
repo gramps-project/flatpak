@@ -7,6 +7,11 @@ Gramps flatpak 6.0.0-rc2
   - update gspell to 1.14.0
   - removed python-fontconfig since its requirement got dropped in Gramps 5.2
   - update pyicu to 2.14
+  - update graphviz to 12.2.1
+  - update pygraphviz to 1.14
+  - update ghostscriptpdl to 10.05.0
+  - remove decorator dependency
+  - update networkx to 3.4.2
 
 Gramps flatpak 6.0.0-rc1
   - update Gramps source to 6.0.0-rc1
