@@ -6,6 +6,7 @@ Gramps flatpak 6.0.0-rc2
   - update PILLOW to 11.1.0
   - update gspell to 1.14.0
   - removed python-fontconfig since its requirement got dropped in Gramps 5.2
+  - update pyicu to 2.14
 
 Gramps flatpak 6.0.0-rc1
   - update Gramps source to 6.0.0-rc1
