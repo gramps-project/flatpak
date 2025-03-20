@@ -4,7 +4,7 @@ Gramps flatpak 6.0.0-rc2
   - update exiv2 to 0.28.5
   - update gexiv2 to 0.14.3
   - update PILLOW to 11.1.0
-  - update gspell to 1.14.0
+  - removed manual gspell install because already in runtime
   - removed python-fontconfig since its requirement got dropped in Gramps 5.2
 
 Gramps flatpak 6.0.0-rc1
