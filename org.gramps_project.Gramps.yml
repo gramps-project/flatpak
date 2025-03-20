@@ -71,8 +71,7 @@ modules:
 
     # Gspell most recent version as of 2025.03 was from 2024.09
   - name: gspell
-    cleanup:
-       - /bin 
+    buildsystem: meson
     sources: 
       - type: archive
         url: https://gitlab.gnome.org/GNOME/gspell/-/archive/1.14.0/gspell-1.14.0.tar.gz
