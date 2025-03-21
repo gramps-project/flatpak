@@ -1,7 +1,7 @@
 Gramps flatpak 6.0.0-0
   - update Gramps source and sha256 to 6.0.0
   - update Gnome Platform to 48
-  - add orjson version 3.9.15 since 3.10.15 does not compile in flatpak
+  - add orjson 3.10.15 with separate arch64 and x86_64 wheels
   - update exiv2 to 0.28.5
   - update gexiv2 to 0.14.3
   - update PILLOW to 11.1.0
