@@ -187,7 +187,7 @@ modules:
       - type: file
         only-arches: [x86_64]
         url: https://files.pythonhosted.org/packages/fa/da/31543337febd043b8fa80a3b67de627669b88c7b128d9ad4cc2ece005b7a/orjson-3.10.15-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256: 6fd9bc64421e9fe9bd88039e7ce8e58d4fead67ca88e3a4014b143cec7684fd4
+        sha256: b48f59114fe318f33bbaee8ebeda696d8ccc94c9e90bc27dbe72153094e26f41
       - type: file
         only-arches: [aarch64]
         url: https://files.pythonhosted.org/packages/48/b7/2622b29f3afebe938a0a9037e184660379797d5fd5234e5998345d7a5b43/orjson-3.10.15-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
