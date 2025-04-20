@@ -1,3 +1,6 @@
+Gramps flatpak 6.0.1-0
+  - update Gramps source to 6.0.1
+
 Gramps flatpak 6.0.0-0
   - update Gramps source and sha256 to 6.0.0
   - update Gnome Platform to 48
