@@ -69,14 +69,13 @@ modules:
       - type: patch
         path: goocanvas-3.0.0-gcc14.patch
 
-# temporarily comment out gspell because it crashes Gramps when enabled in settings and user works on Notes
     # Gspell most recent version as of 2025.03 was from 2024.09
-#  - name: gspell
-#    buildsystem: meson
-#    sources: 
-#      - type: archive
-#        url: https://gitlab.gnome.org/GNOME/gspell/-/archive/1.14.0/gspell-1.14.0.tar.gz
-#        sha256: 6ff11258569227c4ef0eaed0524e0c9f84308d34f89fbc49e5d961cdd832ac6a
+  - name: gspell
+    buildsystem: meson
+    sources: 
+      - type: archive
+        url: https://gitlab.gnome.org/GNOME/gspell/-/archive/1.14.0/gspell-1.14.0.tar.gz
+        sha256: 6ff11258569227c4ef0eaed0524e0c9f84308d34f89fbc49e5d961cdd832ac6a
 
 # following dependencies are for images and metadata
     # exiv2 most recent version as of 2025.03 was from 2025.02
@@ -201,5 +200,5 @@ modules:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url: https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.1.tar.gz
-        sha256: 894d854da32ff51a72dd812e8430dcbaa11757928a018c76120cfbb16686e877
+        url: https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.2.tar.gz
+        sha256: 645a31184b6de1fe43ff62498dcafe339f1166aec87725c8d463495743c86dc7

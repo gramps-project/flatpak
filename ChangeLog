@@ -1,3 +1,7 @@
+Gramps flatpak 6.0.2-1
+  - update Gramps source to 6.0.2
+  - reenable gspell
+
 Gramps flatpak 6.0.1-1
   - disable gspell because it crashes Gramps when spell check is enabled while user works on Notes
 
