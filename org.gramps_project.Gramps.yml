@@ -45,7 +45,7 @@ cleanup:
   - /share/man
 
 modules:
-#python3-keyring for GrampsWeb
+# python3-keyring for GrampsWeb
 # keyring requires dbus-python to use Kwallet as of 2025.08.20
   # dbus-python most recent version as of 2025.08.20 is 1.4.0 from 2025.03
   - name: dbus-python
@@ -54,15 +54,25 @@ modules:
       - type: archive
         url:  https://gitlab.freedesktop.org/dbus/dbus-python/-/archive/dbus-python-1.4.0/dbus-python-dbus-python-1.4.0.tar.gz
         sha256:  da4ee9bbb9eb901d463a7cc9f99dfdbe6c751c8b48b29b78d378985a3c9656ad
-  #python3-keyring most recent version as of 2025.08.20 is v25.6.0 from 2024.12.25
-  - name: python3-keyring
+  # python3-keyring will not compile without python3-secretstorage, which requires Jeepney and python-cryptography for v3.3.3 as of 2025.08.20
+  # Jeepney most recent version as of 2025.08.20 is v0.9.0 from 2025.02.27
+  - name: Jeepney
     buildsystem: simple
     build-commands:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/70/09/d904a6e96f76ff214be59e7aa6ef7190008f52a0ab6689760a98de0bf37d/keyring-25.6.0.tar.gz
-        sha256:  0b39998aa941431eb3d9b0d4b2460bc773b9df6fed7621c2dfb291a7e0187a66
+        url:  https://files.pythonhosted.org/packages/7b/6f/357efd7602486741aa73ffc0617fb310a29b588ed0fd69c2399acbb85b0c/jeepney-0.9.0.tar.gz
+        sha256:   cf0e9e845622b81e4a28df94c40345400256ec608d0e55bb8a3feaa9163f5732
+  #python3-keyring most recent version as of 2025.08.20 is v25.6.0 from 2024.12.25
+#  - name: python3-keyring
+#    buildsystem: simple
+#    build-commands:
+#      - pip3 install --no-build-isolation .
+#    sources:
+#      - type: archive
+#        url:  https://files.pythonhosted.org/packages/70/09/d904a6e96f76ff214be59e7aa6ef7190008f52a0ab6689760a98de0bf37d/keyring-25.6.0.tar.gz
+#        sha256:  0b39998aa941431eb3d9b0d4b2460bc773b9df6fed7621c2dfb291a7e0187a66
 # PILLOW for cropping images, latex support, and addons; most recent version as of 2025.03 is from 2025.01
   - name: PILLOWDependency
     buildsystem: simple
