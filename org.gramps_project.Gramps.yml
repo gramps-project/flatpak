@@ -54,16 +54,26 @@ modules:
       - type: archive
         url:  https://gitlab.freedesktop.org/dbus/dbus-python/-/archive/dbus-python-1.4.0/dbus-python-dbus-python-1.4.0.tar.gz
         sha256:  da4ee9bbb9eb901d463a7cc9f99dfdbe6c751c8b48b29b78d378985a3c9656ad
-  # python3-keyring will not compile without python3-secretstorage, which requires Jeepney and python-cryptography for v3.3.3 as of 2025.08.20
-  # Jeepney most recent version as of 2025.08.20 is v0.9.0 from 2025.02.27
-  - name: Jeepney
+  # flit_core is a dependency for Jeepney which is a dep for python3-secretstorage, which is a dep for python3-keyring
+  # flit_core most recent version as of 2025.08.21 is v3.12.0 from 2025.03.25
+  - name: flit_core
     buildsystem: simple
     build-commands:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url:  https://files.pythonhosted.org/packages/7b/6f/357efd7602486741aa73ffc0617fb310a29b588ed0fd69c2399acbb85b0c/jeepney-0.9.0.tar.gz
-        sha256:   cf0e9e845622b81e4a28df94c40345400256ec608d0e55bb8a3feaa9163f5732
+        url:  https://files.pythonhosted.org/packages/f2/65/b6ba90634c984a4fcc02c7e3afe523fef500c4980fec67cc27536ee50acf/flit_core-3.12.0-py3-none-any.whl
+        sha256:   e7a0304069ea895172e3c7bb703292e992c5d1555dd1233ab7b5621b5b69e62c
+  # python3-keyring will not compile without python3-secretstorage, which requires Jeepney and python-cryptography for v3.3.3 as of 2025.08.20
+  # Jeepney most recent version as of 2025.08.20 is v0.9.0 from 2025.02.27
+ # - name: Jeepney
+ #   buildsystem: simple
+ #   build-commands:
+ #     - pip3 install --no-build-isolation .
+ #   sources:
+ #     - type: archive
+ #       url:  https://files.pythonhosted.org/packages/7b/6f/357efd7602486741aa73ffc0617fb310a29b588ed0fd69c2399acbb85b0c/jeepney-0.9.0.tar.gz
+ #       sha256:   cf0e9e845622b81e4a28df94c40345400256ec608d0e55bb8a3feaa9163f5732
   #python3-keyring most recent version as of 2025.08.20 is v25.6.0 from 2024.12.25
 #  - name: python3-keyring
 #    buildsystem: simple
