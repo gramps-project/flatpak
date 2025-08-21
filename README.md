@@ -25,7 +25,12 @@ Dependencies added to the flatpak
 - geocodeglib
 - goocanvas
 - networkx
-- python3-keyring and its dbus-python dependency for KWallet
+- python3-keyring and the following 5 subdependencies
+- dbus-python dependency for KWallet
+- flit_core
+- Jeepney
+- python3-secretstorage
+- python3-cryptography
 
 To request another prerequisite be added to support another Gramps add-on, you can request it at the gramps project flatpak github or at the flathub Gramps flatpak github.
 
