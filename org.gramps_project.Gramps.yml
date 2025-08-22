@@ -64,7 +64,7 @@ modules:
       - type: archive
         url:  https://files.pythonhosted.org/packages/69/59/b6fc2188dfc7ea4f936cd12b49d707f66a1cb7a1d2c16172963534db741b/flit_core-3.12.0.tar.gz
         sha256:  18f63100d6f94385c6ed57a72073443e1a71a4acb4339491615d0f16d6ff01b2
-  # python3-keyring will not compile without python3-secretstorage, which requires Jeepney and python-cryptography for v3.3.3 as of 2025.08.20
+  # Jeepney is a dep for secretstorage which is a dep for python3-keyring
   # Jeepney most recent version as of 2025.08.20 is v0.9.0 from 2025.02.27
   - name: Jeepney
     buildsystem: simple
@@ -89,7 +89,16 @@ modules:
         only-arches: [aarch64]
         url:  https://files.pythonhosted.org/packages/77/2d/09b097adfdee0227cfd4c699b3375a842080f065bab9014248933497c3f9/cryptography-45.0.6-cp37-abi3-manylinux_2_34_aarch64.whl
         sha256:  5bd6020c80c5b2b2242d6c48487d7b85700f5e0038e67b29d706f98440d66eb5
-  #python3-keyring most recent version as of 2025.08.20 is v25.6.0 from 2024.12.25
+  # python3-secretstorage is a dep for python3-keyring, most recent version as of 2025.08.22 is 3.3.3 from 2022.08.13
+  - name: SecretStorage
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-build-isolation .
+    sources:
+      - type: archive
+        url:  https://files.pythonhosted.org/packages/53/a4/f48c9d79cb507ed1373477dbceaba7401fd8a23af63b837fa61f1dcd3691/SecretStorage-3.3.3.tar.gz
+        sha256:  2403533ef369eca6d2ba81718576c5e0f564d5cca1b58f73a8b23e7d4eeebd77
+  # python3-keyring most recent version as of 2025.08.20 is v25.6.0 from 2024.12.25
 #  - name: python3-keyring
 #    buildsystem: simple
 #    build-commands:
