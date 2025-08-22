@@ -1,6 +1,6 @@
 Gramps flatpak 6.0.4--2
   - add python3-keyring for GrampsWeb compatibility
-  - deps for python3-keyring are dbus-python, flit_core, Jeepney, python3-secretstorage, python3-cryptography
+  - deps for python3-keyring are dbus-python, flit_core, Jeepney, python3-secretstorage, python3-cryptography, cffi
 
 Gramps flatpak 6.0.4--1
   - update Gramps source to 6.0.4
