@@ -75,14 +75,20 @@ modules:
         url:  https://files.pythonhosted.org/packages/7b/6f/357efd7602486741aa73ffc0617fb310a29b588ed0fd69c2399acbb85b0c/jeepney-0.9.0.tar.gz
         sha256:   cf0e9e845622b81e4a28df94c40345400256ec608d0e55bb8a3feaa9163f5732
   # cryptography dependency for python3-secretstorage dependency for python3-keyring, most recent version as of 2025.08.22 is 45.0.6 from 2025.08.05
+  # cryptography tar for 45.0.6 requires a rust cargo library, so using whl
   - name: Cryptography
     buildsystem: simple
     build-commands:
-      - pip3 install --no-build-isolation .
+      - pip3 install --prefix /app --no-deps cryptography*.whl
     sources:
-      - type: archive
-        url:  https://files.pythonhosted.org/packages/d6/0d/d13399c94234ee8f3df384819dc67e0c5ce215fb751d567a55a1f4b028c7/cryptography-45.0.6.tar.gz
-        sha256:  5c966c732cf6e4a276ce83b6e4c729edda2df6929083a952cc7da973c539c719
+      - type: file
+        only-arches: [x86_64]
+        url:  https://files.pythonhosted.org/packages/55/66/061ec6689207d54effdff535bbdf85cc380d32dd5377173085812565cf38/cryptography-45.0.6-cp37-abi3-manylinux_2_34_x86_64.whl
+        sha256:  eccddbd986e43014263eda489abbddfbc287af5cddfd690477993dbb31e31016
+      - type: file
+        only-arches: [aarch64]
+        url:  https://files.pythonhosted.org/packages/77/2d/09b097adfdee0227cfd4c699b3375a842080f065bab9014248933497c3f9/cryptography-45.0.6-cp37-abi3-manylinux_2_34_aarch64.whl
+        sha256:  5bd6020c80c5b2b2242d6c48487d7b85700f5e0038e67b29d706f98440d66eb5
   #python3-keyring most recent version as of 2025.08.20 is v25.6.0 from 2024.12.25
 #  - name: python3-keyring
 #    buildsystem: simple
