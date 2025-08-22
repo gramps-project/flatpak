@@ -15,8 +15,8 @@ Dependencies confirmed in the flatpak platform:
 
 Dependencies added to the flatpak
 - orjson
-- osmgpsmap with its own dependencies
-- graphviz
+- osmgpsmap with its libsoup dependency
+- graphviz and pygraphviz
 - PyICU
 - ghostscript
 - gspell
