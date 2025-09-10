@@ -29,7 +29,7 @@ finish-args:
 # needs network access for maps
   - --share=network
 # allow access to Secret Service for GrampsWebAddon
-  - --own-name=org.freedesktop.secrets
+  - --talk-name=org.freedesktop.secrets
 
 build-options:
   env:
@@ -49,6 +49,7 @@ cleanup:
 modules:
 # python3-keyring for GrampsWeb
 # keyring requires dbus-python to use Kwallet as of 2025.08.20
+  - shared-modules/libsecret/libsecret.json
   # dbus-python most recent version as of 2025.08.20 is 1.4.0 from 2025.03
   - name: dbus-python
     buildsystem: meson
