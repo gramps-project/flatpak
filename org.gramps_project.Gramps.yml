@@ -43,6 +43,7 @@ cleanup:
   - /lib/cmake
   - /share/gir-1.0
   - /share/man
+
 modules:
 # PILLOW for cropping images, latex support, and addons; most recent version as of 2025.03 is from 2025.01
   - name: PILLOWDependency
@@ -53,8 +54,7 @@ modules:
       - type: archive
         url:  https://files.pythonhosted.org/packages/f3/af/c097e544e7bd278333db77933e535098c259609c4eb3b85381109602fb5b/pillow-11.1.0.tar.gz
         sha256:  368da70808b36d73b4b390a8ffac11069f8a5c85f29eff1f1b01bcf3ef5b2a20
-
-    # Goocanvas is abandoned and the most recent update is from 2021.01.16.
+# Goocanvas is abandoned and the most recent update is from 2021.01.16.
   - name: GoocanvasDependency
     buildsystem: autotools
     config-opts:
@@ -68,16 +68,14 @@ modules:
         sha256:  670a7557fe185c2703a14a07506156eceb7cea3b4bf75076a573f34ac52b401a
       - type: patch
         path: goocanvas-3.0.0-gcc14.patch
-
-    # Gspell most recent version as of 2025.03 was from 2024.09
+# Gspell most recent version as of 2025.03 was from 2024.09
   - name: gspell
     buildsystem: meson
     sources: 
       - type: archive
         url: https://gitlab.gnome.org/GNOME/gspell/-/archive/1.14.0/gspell-1.14.0.tar.gz
         sha256: 6ff11258569227c4ef0eaed0524e0c9f84308d34f89fbc49e5d961cdd832ac6a
-
-# following dependencies are for images and metadata
+# following dependencies are for images and metadata related Gramps addons
     # exiv2 most recent version as of 2025.03 was from 2025.02
   - name: exiv2
     buildsystem: cmake-ninja
@@ -89,7 +87,6 @@ modules:
       - type: archive
         url:  https://github.com/Exiv2/exiv2/archive/refs/tags/v0.28.5.tar.gz
         sha256: e1671f744e379a87ba0c984617406fdf8c0ad0c594e5122f525b2fb7c28d394d
-
     # gexiv2 most recent version as of 2025.03 was from 2024.06
     # gramps apparently needs introspection to use gexiv2
   - name: gexiv2Dependency
@@ -102,7 +99,7 @@ modules:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/gexiv2/-/archive/gexiv2-0.14.3/gexiv2-gexiv2-0.14.3.tar.gz
         sha256:  5a7ea82effa9c812ac1518a1b4a22a15035d721b0b30cd4b8303228fd5b38e3c
-
+# Map related dependencies
    # osmgpsmap dependency 1.2 as of 2023-06 requires libsoup 2.4. 
    # Libsoup 2 is not in Gnome 44 runtime as of 2023-06, so libsoup needs a manual install until
    # osmgpsmap gets updated to use a newer version of libsoup. Latest libsoup 2 is 2.74 from Oct 2022.
@@ -112,7 +109,6 @@ modules:
       - type: archive
         url: https://download.gnome.org/sources/libsoup/2.74/libsoup-2.74.3.tar.xz
         sha256: e4b77c41cfc4c8c5a035fcdc320c7bc6cfb75ef7c5a034153df1413fa1d92f13
-
     # osmgpsmap is abandoned as of 2025.03 so most recent version was from 202102
   - name: osmgpsmapDependency
     buildsystem: autotools
@@ -120,7 +116,6 @@ modules:
       - type: archive
         url:  https://github.com/nzjrs/osm-gps-map/releases/download/1.2.0/osm-gps-map-1.2.0.tar.gz
         sha256:  ddec11449f37b5dffb4bca134d024623897c6140af1f9981a8acc512dbf6a7a5
-
     # Gramps does not see geocodeglib in platform, needed for place coordinate addon
     # appears to not have versioned releases anymore, last git edit as of 2025.03 was from 2024.03
   - name: geocodeglibDependency
@@ -129,8 +124,7 @@ modules:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/geocode-glib/-/archive/8f1b5a9149156a03f62dfea14780e8fee030506d/geocode-glib-8f1b5a9149156a03f62dfea14780e8fee030506d.tar.gz
         sha256:  f4ea933937633d6e33607945c9ca45070628e8545be0ea502b59f959932e8b26
-
-    # pyicu most recent release as of 2025.03 was from 2024.10
+# pyicu is a recommended dep for Gramps; most recent release as of 2025.03 was from 2024.10
   - name: PyICUDependency
     buildsystem: simple
     build-commands:
@@ -139,16 +133,14 @@ modules:
       - type: archive
         url: https://files.pythonhosted.org/packages/52/21/4e9b0a3ace3027fc63107fa2b5d6e66e321e104da071d787856962fbad52/PyICU-2.14.tar.gz
         sha256: acc7eb92bd5c554ed577249c6978450a4feda0aa6f01470152b3a7b382a02132
-
-    # graphviz most recent version as of 2025.03 from 2024.12
+# graphviz is a recommended dep for Gramps; most recent version as of 2025.03 from 2024.12
   - name: GraphVizDependency
     buildsystem: autotools
     sources:
       - type: archive
         url: https://gitlab.com/api/v4/projects/4207231/packages/generic/graphviz-releases/12.2.1/graphviz-12.2.1.tar.gz
         sha256: 242bc18942eebda6db4039f108f387ec97856fc91ba47f21e89341c34b554df8
-
-    # pygraphviz 1.14 most recent version 2024.09.29 as of 2025.03
+# pygraphviz allows graphviz to work with python; 1.14 most recent version 2024.09.29 as of 2025.03
   - name: PyGraphVizDependency
     buildsystem: simple
     build-commands:
@@ -157,15 +149,13 @@ modules:
       - type: archive
         url: https://github.com/pygraphviz/pygraphviz/archive/refs/tags/pygraphviz-1.14.tar.gz
         sha256:  d9a43f34b920367fa89a2598083b47db42a28078aff7d4e2cb41475137532560
-
-    # ghostscript most recent version as of 2025.03 was from 2025.03
+# ghostscript is recommended for Gramps; most recent version as of 2025.03 was from 2025.03
   - name: GhostscriptDependency
     buildsystem: autotools
     sources:
       - type: archive
         url: https://github.com/ArtifexSoftware/ghostpdl/archive/refs/tags/ghostpdl-10.05.0.tar.gz
         sha256: 8fb8eb3c34646ac7f0287c7673ebbf3928b23e558f421edf4495b9881430a1d4
-
 # for network chart addon
     # networkx most recent stable version as of 2025.03 was from 2024.10
   - name: networkxDependency
@@ -176,13 +166,12 @@ modules:
       - type: archive
         url: https://files.pythonhosted.org/packages/fd/1d/06475e1cd5264c0b870ea2cc6fdb3e37177c1e565c43f56ff17a10e3937f/networkx-3.4.2.tar.gz
         sha256: 307c3669428c5362aab27c8a1260aa8f47c4e91d3891f48be0141738d8d053e1
-
 # Gramps 6 requires orjson to run in flatpak
 # most recent version is from 2025.01 as of 2025.03
   - name: orjsonDependency
     buildsystem: simple
     build-commands:
-      - pip3 install --prefix /app --no-deps orjson-*.whl
+      - pip3 install --no-deps orjson-*.whl
     sources:
       - type: file
         only-arches: [x86_64]
@@ -192,7 +181,6 @@ modules:
         only-arches: [aarch64]
         url: https://files.pythonhosted.org/packages/48/b7/2622b29f3afebe938a0a9037e184660379797d5fd5234e5998345d7a5b43/orjson-3.10.15-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
         sha256: dba5a1e85d554e3897fa9fe6fbcff2ed32d55008973ec9a2b992bd9a65d2352d
-
 # Gramps
   - name: Gramps
     buildsystem: simple
@@ -200,5 +188,5 @@ modules:
       - pip3 install --no-build-isolation .
     sources:
       - type: archive
-        url: https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.4.tar.gz
-        sha256: d6c894f9660c8c6f3fb63ba7468889abcd6f0a76eee9017582fbde647b92f4b7
+        url: https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.5.tar.gz
+        sha256: 1295fe352669cdf419d762445db1d26ba5492da30c0a78fef278856eda9cc680
