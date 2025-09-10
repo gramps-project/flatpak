@@ -26,8 +26,10 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --share=ipc
-#needs network access for maps
+# needs network access for maps
   - --share=network
+# allow access to Secret Service for GrampsWebAddon
+  - --own-name=org.freedesktop.secrets
 
 build-options:
   env:
