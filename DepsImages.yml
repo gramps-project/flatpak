@@ -26,3 +26,12 @@ modules:
       - type: archive
         url:  https://gitlab.gnome.org/GNOME/gexiv2/-/archive/gexiv2-0.14.3/gexiv2-gexiv2-0.14.3.tar.gz
         sha256:  5a7ea82effa9c812ac1518a1b4a22a15035d721b0b30cd4b8303228fd5b38e3c
+    # imagesize most recent version as of 2026.04 was from 2026.03
+  - name: python-imagesize
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps imagesize-*.whl
+    sources:
+      - type: file
+        url:  https://files.pythonhosted.org/packages/5f/53/fb7122b71361a0d121b669dcf3d31244ef75badbbb724af388948de543e2/imagesize-2.0.0-py2.py3-none-any.whl
+        sha256:  5667c5bbb57ab3f1fa4bc366f4fbc971db3d5ed011fd2715fd8001f782718d96

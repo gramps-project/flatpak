@@ -1,8 +1,29 @@
 # Core dependencies for Gramps
+# some code adapted from AI (Grok) recommendations
 name: DepsCore
 buildsystem: simple
 build-commands: []
 modules:
+# ttf-freefonts recommended at Gramps 6.0.8 README
+  - name: ttf-freefonts
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/share/fonts/truetype/freefont
+      - install -m 644 *.ttf /app/share/fonts/truetype/freefont/
+      - install -m 644 README /app/share/doc/gnu-freefont/ || true
+    sources:
+      - type: archive
+        url:  https://ftp.gnu.org/gnu/freefont/freefont-ttf-20051206.tar.gz
+        sha256:  247af4ab5be736df63d9572665ea341251e8afaf924f384ddcb18c3549113ed3
+# python-fontconfig optional for symbols and reports, most recent version as of 2026.04 is from 2025.09
+  - name: python-fontconfig
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-build-isolation .
+    sources:
+      - type: archive
+        url:  https://files.pythonhosted.org/packages/20/59/99db03443f584b6d14bb635ef9f849dae7966792471dee9bf50ae2308f07/python_fontconfig-0.6.2.post1.tar.gz
+        sha256:   4837290305613710cf6c515db8923284da06e4f48a549d2fe8e2d4276aed3e73 
 # PILLOW for cropping images, latex support, and addons; most recent version as of 2025.03 is from 2025.01
   - name: PILLOWDependency
     buildsystem: simple
@@ -58,20 +79,6 @@ modules:
       - type: archive
         url:  https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10060/ghostscript-10.06.0.tar.gz
         sha256:  5bd6da34794928cc7e616f288e32bd0be7f9a5ca2d3c206a0af2c19a4e3a318f
-# most recent version as of 2025.11 is from 2025.10
-  - name: orjsonDependency
-    buildsystem: simple
-    build-commands:
-      - pip3 install --no-deps orjson-*.whl
-    sources:
-      - type: file
-        only-arches: [x86_64]
-        url: https://files.pythonhosted.org/packages/aa/fd/d0733fcb9086b8be4ebcfcda2d0312865d17d0d9884378b7cffb29d0763f/orjson-3.11.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-        sha256:  1469d254b9884f984026bd9b0fa5bbab477a4bfe558bba6848086f6d43eb5e73
-      - type: file
-        only-arches: [aarch64]
-        url: https://files.pythonhosted.org/packages/55/b9/ae8d34899ff0c012039b5a7cb96a389b2476e917733294e498586b45472d/orjson-3.11.4-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-        sha256: 38aa9e65c591febb1b0aed8da4d469eba239d434c218562df179885c94e1a3ad
 # Gspell most recent version as of 2025.03 was from 2024.09
   - name: gspell
     buildsystem: meson
@@ -79,3 +86,12 @@ modules:
       - type: archive
         url: https://gitlab.gnome.org/GNOME/gspell/-/archive/1.14.0/gspell-1.14.0.tar.gz
         sha256: 6ff11258569227c4ef0eaed0524e0c9f84308d34f89fbc49e5d961cdd832ac6a
+# pycountry for internationalization, most recent version as of 2026.04 is from 2026.02
+  - name: pycountry
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps pycountry-*.whl
+    sources:
+      - type: file
+        url:  https://files.pythonhosted.org/packages/9c/42/7703bd45b62fecd44cd7d3495423097e2f7d28bc2e99e7c1af68892ab157/pycountry-26.2.16-py3-none-any.whl
+        sha256:  115c4baf7cceaa30f59a4694d79483c9167dbce7a9de4d3d571c5f3ea77c305a

@@ -1,0 +1,108 @@
+# Build dependencies for Gramps due to switch to pep517 in Gramps 6.1
+name: DepsBuild
+buildsystem: simple
+build-commands: []
+modules:
+# orjson in required deps for Gramps6.1 pyproject
+# most recent version as of 2025.11 is from 2025.10
+  - name: orjsonDependency
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps orjson-*.whl
+    sources:
+      - type: file
+        only-arches: [x86_64]
+        url: https://files.pythonhosted.org/packages/aa/fd/d0733fcb9086b8be4ebcfcda2d0312865d17d0d9884378b7cffb29d0763f/orjson-3.11.4-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+        sha256: 1469d254b9884f984026bd9b0fa5bbab477a4bfe558bba6848086f6d43eb5e73
+      - type: file
+        only-arches: [aarch64]
+        url: https://files.pythonhosted.org/packages/55/b9/ae8d34899ff0c012039b5a7cb96a389b2476e917733294e498586b45472d/orjson-3.11.4-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+        sha256: 38aa9e65c591febb1b0aed8da4d469eba239d434c218562df179885c94e1a3ad
+# Gramps 6.1 requires hatchling for installation when tag --no-build-deps is used
+# hatchling most recent version as of 2026.04 is from 2026.02
+  - name: hatchling
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps hatchling-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/d3/8a/44032265776062a89171285ede55a0bdaadc8ac00f27f0512a71a9e3e1c8/hatchling-1.29.0-py3-none-any.whl
+        sha256: 50af9343281f34785fab12da82e445ed987a6efb34fd8c2fc0f6e6630dbcc1b0
+# pathspec required for Gramps 6.1 module to build
+# pathspec most recent version as of 2026.04 is from 2026.01
+  - name: pathspec
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps pathspec-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/ef/3c/2c197d226f9ea224a9ab8d197933f9da0ae0aac5b6e0f884e2b8d9c8e9f7/pathspec-1.0.4-py3-none-any.whl
+        sha256: fb6ae2fd4e7c921a165808a552060e722767cfa526f99ca5156ed2ce45a5c723
+# pluggy required for Gramps 6.1 module to build
+# most recent version as of 2026.04 is from 2025.05
+  - name: pluggy
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps pluggy-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl
+        sha256: e920276dd6813095e9377c0bc5566d94c932c33b27a3e3945d8389c374dd4746
+# trove_classifiers required for Gramps 6.1 module to build
+# most recent version as of 2026.04 is from 2026.01
+  - name: trove_classifiers
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps trove_classifiers-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/bb/4a/2e5583e544bc437d5e8e54b47db87430df9031b29b48d17f26d129fa60c0/trove_classifiers-2026.1.14.14-py3-none-any.whl
+        sha256: 1f9553927f18d0513d8e5ff80ab8980b8202ce37ecae0e3274ed2ef11880e74d
+# certifi in required deps for pyproject from Gramps 6.1
+# most recent version as of 2026.04 is from 2026.04
+  - name: certifi
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps certifi-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/22/30/7cd8fdcdfbc5b869528b079bfb76dcdf6056b1a2097a662e5e8c04f42965/certifi-2026.4.22-py3-none-any.whl
+        sha256: 3cb2210c8f88ba2318d29b0388d1023c8492ff72ecdde4ebdaddbb13a31b1c4a
+# requests in required deps for Gramps 6.1 pyproject.toml
+ # idna dep of requests most recent version as of 2026.04 is from 2026.04
+  - name: idna
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps idna-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/53/b2/acc33950394b3becb2b664741a0c0889c7ef9f9ffbfa8d47eddb53a50abd/idna-3.12-py3-none-any.whl
+        sha256: 60ffaa1858fac94c9c124728c24fcde8160f3fb4a7f79aa8cdd33a9d1af60a67
+ # charset normalizer is a required dep for requests
+ # charset most recent version as of 2026.04 is from 2026.04
+  - name: charset_normalizer
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps charset_normalizer-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/db/8f/61959034484a4a7c527811f4721e75d02d653a35afb0b6054474d8185d4c/charset_normalizer-3.4.7-py3-none-any.whl
+        sha256: 3dce51d0f5e7951f8bb4900c257dad282f49190fdbebecd4ba99bcc41fef404d
+ # urllib3 req dep of requests, most recent version as of 2026.04 is from 2026.01
+  - name: urllib3
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps urllib3-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/39/08/aaaad47bc4e9dc8c725e68f9d04865dbcb2052843ff09c97b08904852d84/urllib3-2.6.3-py3-none-any.whl
+        sha256: bf272323e553dfb2e87d9bfd225ca7b0f467b919d7bbd355436d3fd37cb0acd4
+# requests most recent version as of 2026.04 is from 2026.03
+  - name: requests
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-deps requests-*.whl
+    sources:
+      - type: file
+        url: https://files.pythonhosted.org/packages/d7/8e/7540e8a2036f79a125c1d2ebadf69ed7901608859186c856fa0388ef4197/requests-2.33.1-py3-none-any.whl
+        sha256: 4e6d1ef462f3626a1f0a0a9c42dd93c63bad33f9f1c1937509b8c5c8718ab56a

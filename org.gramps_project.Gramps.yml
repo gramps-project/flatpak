@@ -1,7 +1,7 @@
 app-id: org.gramps_project.Gramps
 # flatpak-builder will not take hyphen in com.gramps-project.Gramps
 runtime: org.gnome.Platform
-runtime-version: '49'
+runtime-version: '50'
 sdk: org.gnome.Sdk
 command: gramps
 # to force an archive flatpak to use system locale instead of English. Not needed for flathub packages.
@@ -49,6 +49,8 @@ cleanup:
   - /share/gir-1.0
   - /share/man
 modules:
+# manifest below is for Gramps 6.1 to build
+  - DepsBuild.yml
 # manifest below is for core Gramps dependencies
   - DepsCore.yml
 # manifest below is for image and exiv metadata
@@ -63,6 +65,6 @@ modules:
     build-commands:
       - pip3 install --no-build-isolation .
     sources:
-      - type: archive
-        url: https://github.com/gramps-project/gramps/archive/refs/tags/v6.0.7.tar.gz
-        sha256: 5b1d4d63f2abd072330a26d26db161a3c05f9a7d08bab07f29ef5647beafcb0a
+      - type: git
+        url: https://github.com/gramps-project/gramps.git
+        tag: v6.1.0-beta1

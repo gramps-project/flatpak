@@ -1,3 +1,14 @@
+Gramps flatpak 6.1.0-beta1--1
+  - update Gramps to 6.1.0-beta1
+  - add Gramps 6.1 build dependencies pluggy, hatchling, pathspec, trove_classifiers
+  - add requests and certifi required dependencies for Gramps 6.1
+  - add charset_normalizer, idna, and urllib3 as a required dependency for requests (above)
+  - add python-imagesize
+  - update Gnome Platform to 50
+  - add ttf-freefonts
+  - add python-fontconfig
+  - add pycountry
+
 Gramps flatpak 6.0.7--1
   - update Gramps to 6.0.7
 
